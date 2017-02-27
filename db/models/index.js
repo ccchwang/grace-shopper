@@ -7,8 +7,11 @@
 const User = require('./user')
 const OAuth = require('./oauth')
 const Order = require('./order')
+const Cart = require('./cart')
 
 Order.belongsTo(User)
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-module.exports = {User, Order}
+Cart.belongsTo(User)
+
+module.exports = {User, Order, Cart}
