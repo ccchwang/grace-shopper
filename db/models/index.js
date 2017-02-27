@@ -11,4 +11,4 @@ const Order = require('./order')
 Order.belongsTo(User)
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-module.exports = {User}
+module.exports = {User, Order}
