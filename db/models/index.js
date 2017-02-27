@@ -6,7 +6,10 @@
 
 const User = require('./user')
 const OAuth = require('./oauth')
+const Cart = require('./cart')
 
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-module.exports = {User}
+Cart.belongsTo(User)
+
+module.exports = {User, Cart}
