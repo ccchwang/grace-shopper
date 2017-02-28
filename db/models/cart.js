@@ -4,4 +4,8 @@ const db = require('APP/db')
 
 const Cart = db.define('cart', {})
 
-module.exports = Cart
+const CartItem = db.define('cart_item', {
+  quantity: Sequelize.INTEGER
+})
+
+module.exports = {Cart, CartItem}
