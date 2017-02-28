@@ -18,10 +18,13 @@ User.hasOne(OAuth)
 User.hasMany(Order)
 User.hasMany(Review)
 Product.hasMany(Review)
-Order.belongsToMany(LineItem, { through: 'Order_LineItem' })
-LineItem.belongsToMany(Order, { through: 'Order_LineItem' })
+
+Order.hasMany(LineItem)
+LineItem.belongsTo(Order)
+
 LineItem.belongsTo(Product)
 Cart.belongsTo(User)
+
 Cart.belongsToMany(Product, { through: CartItem })
 Product.belongsToMany(Cart, { through: CartItem })
 
