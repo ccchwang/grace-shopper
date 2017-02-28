@@ -35,6 +35,13 @@ const seedProducts = () => db.Promise.map([
 {name: "Legs", description: "Small giraffe", category: "giraffe", quantity: 2, photo: "http://i.imgur.com/Ow7I3kZ.jpg", price: 235},
 ], products => db.model('products').create(products))
 
+const seedLineItems = () => db.Promise.map([
+  {date: "2017-05-25 12:13:57.316-05", price: 683, product_id: 2, quantity: 1, order_id: 1},
+  {date: "2017-04-10 12:13:57.316-05", price: 152, product_id: 1, quantity: 2, order_id: 2},
+  {date: "2017-02-8 12:13:57.316-05", price: 43, product_id: 3, quantity: 3, order_id: 3},
+  {date: "2017-01-2 12:13:57.316-05", price: 384, product_id: 5, quantity: 1, order_id: 4},
+  {date: "2017-10-23 12:13:57.316-05", price: 483, product_id: 4, quantity: 2, order_id: 5},
+], lineItems => db.model('lineItems').create(lineItems))
 
 db.didSync
   .then(() => db.sync({force: true}))
@@ -44,5 +51,7 @@ db.didSync
   .then(products => console.log(`Seeded ${products.length} products OK`))
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+  .then(seedLineItems)
+  .then(lineItems => console.log(`Seeded ${lineItems.length} lineItems OK`))
   .catch(error => console.error(error))
   .finally(() => db.close())
