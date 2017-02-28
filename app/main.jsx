@@ -23,10 +23,12 @@ const loadProducts = () => {
     .catch(console.error)
 }
 
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
+        <Route path='/login' component={Login} />
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePageContainer} onEnter={loadProducts} />
       </Route>
