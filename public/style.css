@@ -32,6 +32,13 @@
 .float-right {
   float: right
 }
+
+
+/*for fixing nav link spacing issues => .nav>li>a {
+  padding: 0
+}*/
+
+
 /*
 .grid-img {
   width: 100%
