@@ -6,6 +6,8 @@ import {connect, Provider} from 'react-redux'
 import axios from 'axios'
 
 import store from './store'
+import Login from './components/Login'
+import WhoAmI from './components/WhoAmI'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
 
