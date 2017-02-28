@@ -9,11 +9,14 @@ const User = db.define('users', {
   name: Sequelize.STRING,
   email: {
     type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
     validate: {
 			isEmail: true,
 			notEmpty: true,
 		}
   },
+  admin: Sequelize.BOOLEAN,
 
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
