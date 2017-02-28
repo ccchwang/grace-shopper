@@ -6,6 +6,7 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 import WhoAmI from './components/WhoAmI'
 import HomePage from './components/HomePage'
 import AppContainer from './containers/AppContainer'
@@ -16,6 +17,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <Route path='/login' component={Login} />
+        <Route path='/signup' component={SignUp} />
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePage} />
       </Route>
