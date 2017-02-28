@@ -9,6 +9,7 @@ import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import AppContainer from './containers/AppContainer'
 
+
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 ) (
@@ -25,6 +26,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
+        <Route path='/login' component={Login} />
       </Route>
     </Router>
   </Provider>,

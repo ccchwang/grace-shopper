@@ -1,14 +1,47 @@
 import React from 'react'
+import {PageHeader, Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
 
 export const Login = ({ login }) => (
-  <form onSubmit={evt => {
+  <div className="login-container">
+  <Form horizontal onSubmit={evt => {
     evt.preventDefault()
-    login(evt.target.username.value, evt.target.password.value)
+    login(evt.target.email.value, evt.target.password.value)
   } }>
-    <input name="username" />
-    <input name="password" type="password" />
-    <input type="submit" value="Login" />
-  </form>
+
+    <FormGroup controlId="formHorizontalEmail">
+      <Col componentClass={ControlLabel} smOffset={2} sm={2}>
+        Email
+      </Col>
+      <Col sm={4}>
+        <FormControl type="email" name='email' placeholder="Email" />
+      </Col>
+    </FormGroup>
+
+    <FormGroup controlId="formHorizontalPassword">
+      <Col componentClass={ControlLabel} smOffset={2} sm={2}>
+        Password
+      </Col>
+      <Col sm={4}>
+        <FormControl type="password" name='password' placeholder="Password" />
+      </Col>
+    </FormGroup>
+
+    <FormGroup>
+      <Col smOffset={4} sm={10}>
+        <Checkbox>Remember me</Checkbox>
+      </Col>
+    </FormGroup>
+
+    <FormGroup>
+      <Col smOffset={4} sm={10}>
+        <Button type="submit" value="Login">
+          Sign in
+        </Button>
+      </Col>
+    </FormGroup>
+  </Form>
+  </div>
+
 )
 
 import {login} from 'APP/app/reducers/auth'
