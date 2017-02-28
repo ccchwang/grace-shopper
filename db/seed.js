@@ -43,14 +43,35 @@ const seedOrders = () => db.Promise.map([
   {date: '2017-02-25 12:39:46.47-05', status: 'delivered', address: '50 Wall Street', user_id: '5'},
 ], orders => db.model('orders').create(orders))
 
+const seedLineItems = () => db.Promise.map([
+ {date: "2017-05-25 12:13:57.316-05", price: 683, product_id: 2, quantity: 1, order_id: 1},
+ {date: "2017-04-10 12:13:57.316-05", price: 152, product_id: 1, quantity: 2, order_id: 2},
+ {date: "2017-02-8 12:13:57.316-05", price: 43, product_id: 3, quantity: 3, order_id: 3},
+ {date: "2017-01-2 12:13:57.316-05", price: 384, product_id: 5, quantity: 1, order_id: 4},
+ {date: "2017-10-23 12:13:57.316-05", price: 483, product_id: 4, quantity: 2, order_id: 5},
+], lineItems => db.model('lineItems').create(lineItems))
+
+const seedCarts = () => db.Promise.map([
+ {user_id: '1'},
+ {user_id: '2'},
+ {user_id: '3'},
+ {user_id: '4'},
+ {user_id: '5'},
+
+], cart => db.model('cart').create(cart))
+
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
+  .then(seedCarts)
+  .then(carts => console.log(`Seeded ${carts.length} carts OK`))
   .then(seedOrders)
   .then(orders => console.log(`Seeded ${orders.length} orders OK`))
+  .then(seedLineItems)
+  .then(lineItems => console.log(`Seeded ${lineItems.length} lineItems OK`))
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
   .catch(error => console.error(error))
