@@ -29,14 +29,18 @@ export default function(props) {
           </Nav>
 
           <Nav pullRight>
-            <Navbar.Form>
+            <NavItem >
+            <Navbar.Form className="ss">
               <FormGroup>
                 <FormControl type="text" placeholder="Search" />
               </FormGroup>
               {' '}
               <Button type="submit">Submit</Button>
             </Navbar.Form>
+            </NavItem>
           </Nav>
+
+
         </Navbar.Collapse>
       </Navbar>
     )

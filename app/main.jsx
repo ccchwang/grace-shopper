@@ -3,12 +3,25 @@ import React from 'react'
 import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
+import axios from 'axios'
 
 import store from './store'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
-import HomePage from './components/HomePage'
+import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
+
+//redux things
+import { receiveProducts } from './reducers/products'
+
+
+const loadProducts = () => {
+  axios.get('/api/products')
+    .then(products => {
+      store.dispatch(receiveProducts(products.data))
+    })
+    .catch(console.error)
+}
 
 
 render (
@@ -17,7 +30,7 @@ render (
       <Route path="/" component={AppContainer}>
         <Route path='/login' component={Login} />
         <IndexRedirect to="/home" />
-        <Route path="/home" component={HomePage} />
+        <Route path="/home" component={HomePageContainer} onEnter={loadProducts} />
       </Route>
     </Router>
   </Provider>,
