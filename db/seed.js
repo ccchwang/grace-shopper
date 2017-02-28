@@ -35,6 +35,13 @@ const seedProducts = () => db.Promise.map([
 {name: "Legs", description: "Small giraffe", category: "giraffe", quantity: 2, photo: "http://i.imgur.com/Ow7I3kZ.jpg", price: 235},
 ], products => db.model('products').create(products))
 
+const seedOrders = () => db.Promise.map([
+  {date: '2017-02-21 12:39:46.47-05', status: 'shipped', address: '5 Hanover Square', user_id: '1'},
+  {date: '2017-02-22 12:39:46.47-05', status: 'shipping', address: '100 Broadway Street', user_id: '2'},
+  {date: '2017-02-23 12:39:46.47-05', status: 'delivered', address: '25 Kenmare Street 12:39:46.47-05', user_id: '3'},
+  {date: '2017-02-24 12:39:46.47-05', status: 'shipped', address: '10 Walnut Avenue', user_id: '4'},
+  {date: '2017-02-25 12:39:46.47-05', status: 'delivered', address: '50 Wall Street', user_id: '5'},
+], orders => db.model('orders').create(orders))
 
 db.didSync
   .then(() => db.sync({force: true}))
@@ -42,6 +49,8 @@ db.didSync
   .then(users => console.log(`Seeded ${users.length} users OK`))
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
+  .then(seedOrders)
+  .then(orders => console.log(`Seeded ${orders.length} orders OK`))
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
   .catch(error => console.error(error))
