@@ -13,6 +13,11 @@
   vertical-align: middle
 }
 
+
+.login-container {
+  padding-top: 50px;
+}
+
 .wide-grid-box {
   height: 390px;
   padding: 0;
@@ -32,7 +37,4 @@
 .float-right {
   float: right
 }
-/*
-.grid-img {
-  width: 100%
-}*/
+

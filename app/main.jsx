@@ -11,11 +11,11 @@ import HomePage from './components/HomePage'
 import AppContainer from './containers/AppContainer'
 
 
-
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
+        <Route path='/login' component={Login} />
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePage} />
       </Route>
