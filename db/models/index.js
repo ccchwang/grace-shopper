@@ -10,6 +10,7 @@ const Order = require('./order')
 const Cart = require('./cart')
 const Review = require('./review')
 const Line_Item = require('./line_item')
+const Product = require('./product')
 
 Order.belongsTo(User)
 OAuth.belongsTo(User)
@@ -18,5 +19,5 @@ Cart.belongsTo(User)
 User.hasMany(Review)
 // Product.hasMany(Review)
 
-module.exports = {User, Cart, Line_Item, Order, Review}
+module.exports = {User, Cart, Line_Item, Order, Review, Product}
 
