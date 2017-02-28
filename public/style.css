@@ -1,11 +1,38 @@
 .footer {
-  position: absolute;
-  right: 0;
+  position: relative;
+  margin-top: -180px;
+  height: 180px;
+  clear: both;
+  /*right: 0;
   bottom: 0;
-  left: 0;
-  padding: 1rem;
+  left: 0;*/
+  margin-top: 20px;
   padding-top: 80px;
   background-color: lightblue;
   text-align: center;
   vertical-align: middle
 }
+
+.wide-grid-box {
+  height: 390px;
+  padding: 0;
+  background-image: url('https://img.clipartfest.com/28cc8dea7790c78a3b5c0abb08cd0c27_-piglet-piglet_476-281.jpeg');
+  background-size: cover;
+  border: 2px solid white
+}
+
+.grid-box {
+  height: 195px;
+  background-image: url('https://img.clipartfest.com/28cc8dea7790c78a3b5c0abb08cd0c27_-piglet-piglet_476-281.jpeg');
+  background-size: cover;
+  background-position: 50% 50%;
+  border: 2px solid white
+}
+
+.float-right {
+  float: right
+}
+/*
+.grid-img {
+  width: 100%
+}*/
