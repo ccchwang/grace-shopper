@@ -13,7 +13,12 @@ api.get('/products', function(req, res, next) {
   Product.findAll()
     .then(products => res.send(products))
     .catch(next)
+})
 
+api.get('/products/:productId', function (req, res, next) {
+  Product.findById(req.params.productId)
+    .then(product => res.send(product))
+    .catch(next)
 })
 
 
