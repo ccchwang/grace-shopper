@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import store from './store'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 import WhoAmI from './components/WhoAmI'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
@@ -29,6 +30,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
         <Route path='/login' component={Login} />
+        <Route path='/signup' component={SignUp} />
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePageContainer} onEnter={loadProducts} />
       </Route>

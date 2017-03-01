@@ -1,13 +1,14 @@
 import React from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Button } from 'react-bootstrap'
-
+import { Route, RouteHandler, Link } from 'react-router'
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default function(props) {
     return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Cuties</a>
+            <Link to="/home">Cuties</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -24,8 +25,12 @@ export default function(props) {
           </Nav>
 
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Login</NavItem>
-            <NavItem eventKey={2} href="#">Sign Up</NavItem>
+            <LinkContainer to="/login">
+              <NavItem eventKey={1}>Login</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/signup">
+              <NavItem eventKey={2}>Sign Up</NavItem>
+            </LinkContainer>
           </Nav>
 
           <Nav pullRight>
