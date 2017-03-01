@@ -5,7 +5,7 @@ export const SignUp = ({ signup }) => (
   <div className="signup-container">
   <Form horizontal onSubmit={evt => {
     evt.preventDefault()
-    login(evt.target.email.value, evt.target.password.value)
+    signup(evt.target.email.value, evt.target.password.value)
   } }>
 
     <FormGroup controlId="formHorizontalEmail">

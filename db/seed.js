@@ -11,19 +11,19 @@ const seedUsers = () => db.Promise.map([
 
 const seedReviews = () => db.Promise.map([
   {description: "The cutest, most fluffiest ball of love you've ever seen! Will snuggle you for hours!",
-    user_id: '1', product_id: '1'
+    user_id: '1', product_id: '1', rating: '1'
   },
   {description: "Sassy but sweet. She knows she's cute and isn't afraid to flaunt it!",
-    user_id: '2', product_id: '2'
+    user_id: '2', product_id: '2', rating: '1'
   },
   {description: 'Irresistible charm! Looks especially dapper in a top hat and bow tie.',
-    user_id: '3', product_id: '2'
+    user_id: '3', product_id: '2', rating: '1'
   },
   {description: "Feeling down?? Wondering the meaning of life?? This little cutie is an instant pick-me-up and will brighten anyone's day!",
-    user_id: '4', product_id: '3'
+    user_id: '4', product_id: '3', rating: '1'
   },
   {description: "Likes soft blankets, rolling around on the bed, and being the star of the show!",
-    user_id: '5', product_id: '5'
+    user_id: '5', product_id: '5', rating: '1'
   },
 ], review => db.model('reviews').create(review))
 
@@ -36,19 +36,19 @@ const seedProducts = () => db.Promise.map([
 ], products => db.model('products').create(products))
 
 const seedOrders = () => db.Promise.map([
-  {date: '2017-02-21 12:39:46.47-05', status: 'shipped', address: '5 Hanover Square', user_id: '1'},
-  {date: '2017-02-22 12:39:46.47-05', status: 'shipping', address: '100 Broadway Street', user_id: '2'},
-  {date: '2017-02-23 12:39:46.47-05', status: 'delivered', address: '25 Kenmare Street 12:39:46.47-05', user_id: '3'},
-  {date: '2017-02-24 12:39:46.47-05', status: 'shipped', address: '10 Walnut Avenue', user_id: '4'},
-  {date: '2017-02-25 12:39:46.47-05', status: 'delivered', address: '50 Wall Street', user_id: '5'},
+  {status: 'shipped', address: '5 Hanover Square', user_id: '1'},
+  {status: 'shipping', address: '100 Broadway Street', user_id: '2'},
+  {status: 'delivered', address: '25 Kenmare Street 12:39:46.47-05', user_id: '3'},
+  {status: 'shipped', address: '10 Walnut Avenue', user_id: '4'},
+  {status: 'delivered', address: '50 Wall Street', user_id: '5'},
 ], orders => db.model('orders').create(orders))
 
 const seedLineItems = () => db.Promise.map([
- {date: "2017-05-25 12:13:57.316-05", price: 683, product_id: 2, quantity: 1, order_id: 1},
- {date: "2017-04-10 12:13:57.316-05", price: 152, product_id: 1, quantity: 2, order_id: 2},
- {date: "2017-02-8 12:13:57.316-05", price: 43, product_id: 3, quantity: 3, order_id: 3},
- {date: "2017-01-2 12:13:57.316-05", price: 384, product_id: 5, quantity: 1, order_id: 4},
- {date: "2017-10-23 12:13:57.316-05", price: 483, product_id: 4, quantity: 2, order_id: 5},
+ {orderedPrice: 683, product_id: 2, quantity: 1, order_id: 1},
+ {orderedPrice: 152, product_id: 1, quantity: 2, order_id: 2},
+ {orderedPrice: 43, product_id: 3, quantity: 3, order_id: 3},
+ {orderedPrice: 384, product_id: 5, quantity: 1, order_id: 4},
+ {orderedPrice: 483, product_id: 4, quantity: 2, order_id: 5},
 ], lineItems => db.model('lineItems').create(lineItems))
 
 const seedCarts = () => db.Promise.map([

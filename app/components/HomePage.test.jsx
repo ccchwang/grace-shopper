@@ -1,4 +1,5 @@
 import React from 'react'
+
 import chai, {expect} from 'chai'                                                   
 chai.use(require('chai-enzyme')())
 import {shallow} from 'enzyme'
@@ -36,7 +37,7 @@ describe("<HomePage/>'s connection", () => {
   const state = {
     products: {products: seedProducts}
   }
-  
+
   let root, store, dispatch
   beforeEach('create store and render the root', () => {
     store = createStore(state => state, state)
@@ -44,7 +45,9 @@ describe("<HomePage/>'s connection", () => {
     root = shallow(<HomePageContainer store={store}/>)
   })
 
+
   it('gets props.product from store', () => {
     expect(root.find(HomePage)).to.have.prop('products')
   })
 })
+
