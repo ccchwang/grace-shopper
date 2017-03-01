@@ -120,6 +120,9 @@ passport.use(new (require('passport-local').Strategy) (
 
 auth.get('/whoami', (req, res) => res.send(req.user))
 
+// POST requests for local signup:
+auth.post('/signup/local', passport.authenticate('local', { successRedirect: '/', }))
+
 // POST requests for local login:
 auth.post('/login/local', passport.authenticate('local', { successRedirect: '/', }))
 
