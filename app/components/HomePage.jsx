@@ -29,10 +29,6 @@ export default function(props) {
 
 
   return (
-    <Grid>
-      <Row className="show-grid">
-        { boxes }
-      </Row>
-    </Grid>
+    <div className="grid-box"></div>
   )
 }
