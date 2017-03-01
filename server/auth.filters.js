@@ -16,6 +16,8 @@ const forbidden = message => (req, res, next) => {
   res.status(403).send(message)
 }
 
+// EI: eventually, add an adminOnly filter here
+
 // Feel free to add more filters here (suggested: something that keeps out non-admins)
 
 module.exports = {mustBeLoggedIn, selfOnly, forbidden,}

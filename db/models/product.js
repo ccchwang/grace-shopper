@@ -30,4 +30,6 @@ const Product = db.define('products', {
   },
 })
 
+// EI: test validations?
+
 module.exports = Product

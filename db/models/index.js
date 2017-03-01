@@ -13,19 +13,23 @@ const LineItem = require('./lineItem')
 const Product = require('./product')
 
 Order.belongsTo(User)
+User.hasMany(Order)
+
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-User.hasMany(Order)
+
 User.hasMany(Review)
+
 Product.hasMany(Review)
 
 Order.hasMany(LineItem)
 LineItem.belongsTo(Order)
 
 LineItem.belongsTo(Product)
+
 Cart.belongsTo(User)
 
-Cart.belongsToMany(Product, { through: CartItem })
-Product.belongsToMany(Cart, { through: CartItem })
+// Cart.belongsToMany(Product, { through: CartItem })
+// Product.belongsToMany(Cart, { through: CartItem })
 
 module.exports = {User, Cart, CartItem, LineItem, Order, Review, Product}

@@ -9,4 +9,8 @@ const LineItem = db.define('lineItems', {
   quantity: Sequelize.INTEGER,
 })
 
+// EI: virtual that formats price into a string representing dollars?
+
+// EI: why does this need to store date info? should it have a default value there?
+
 module.exports = LineItem
