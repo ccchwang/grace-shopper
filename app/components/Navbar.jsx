@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 export default function(props) {
     return (
-      <Navbar inverse collapseOnSelect>
+      <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/home">Cuties</Link>
@@ -35,7 +35,7 @@ export default function(props) {
 
           <Nav pullRight>
             <NavItem >
-            <Navbar.Form className="ss">
+            <Navbar.Form>
               <FormGroup>
                 <FormControl type="text" placeholder="Search" />
               </FormGroup>
