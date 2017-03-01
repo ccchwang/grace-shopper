@@ -1,5 +1,6 @@
 import React from 'react'
-import chai, {expect} from 'chai'
+
+import chai, {expect} from 'chai'                                                   
 chai.use(require('chai-enzyme')())
 import {shallow} from 'enzyme'
 import {spy} from 'sinon'
@@ -43,3 +44,10 @@ describe("<HomePage/>'s connection", () => {
     dispatch = spy(store, 'dispatch')
     root = shallow(<HomePageContainer store={store}/>)
   })
+
+
+  it('gets props.product from store', () => {
+    expect(root.find(HomePage)).to.have.prop('products')
+  })
+})
+

@@ -66,3 +66,15 @@
 .grid-box-hover:hover {
   opacity: 1
 }
+
+
+
+/* Single Product Page */
+
+.image-responsive {
+  width: 100%;
+}
+
+.show-grid h1 {
+  text-align: center;
+}
