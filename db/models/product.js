@@ -27,7 +27,14 @@ const Product = db.define('products', {
   price: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
+    get: function(price){
+      let unformatted = this.getDataValue(price);
+      let formatted = unformatted / 100;
+      return formatted
+    }
   },
 })
+
+// EI: test validations?
 
 module.exports = Product
