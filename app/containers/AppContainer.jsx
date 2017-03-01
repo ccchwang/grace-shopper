@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 export default function(props) {
 
     return (
-      <div>
+      <div id="body">
         <Navbar />
         { props.children && React.cloneElement(props.children, props) }
         <Footer />

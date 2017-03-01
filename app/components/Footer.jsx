@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap'
 
 export default function(props) {
     return (
-      <div className="footer">
+      <div id="footer">
         <Col sm={12} >
           <Col md={4} >
           Shop our cuties

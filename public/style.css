@@ -1,36 +1,44 @@
-.footer {
+#navbar {
+  background-color: rgba(0, 0, 0, 0.75);
+  vertical-align: middle
+}
+
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
+  color: white
+}
+
+#body {
+  padding-top: 125px;
+}
+
+
+#footer {
   position: relative;
-  margin-top: -180px;
+  margin-top: 20px;
   height: 180px;
   clear: both;
-  /*right: 0;
-  bottom: 0;
-  left: 0;*/
-  margin-top: 20px;
-  padding-top: 80px;
   background-color: lightblue;
   text-align: center;
   vertical-align: middle
 }
 
-
 .login-container {
   padding-top: 50px;
 }
 
-.wide-grid-box {
-  height: 390px;
-  padding: 0;
-  background-image: url('https://img.clipartfest.com/28cc8dea7790c78a3b5c0abb08cd0c27_-piglet-piglet_476-281.jpeg');
+
+/***HOME PAGE***/
+.grid-box {
+  height: 195px;
   background-size: cover;
+  background-position: 50% 50%;
   border: 2px solid white
 }
 
-.grid-box {
-  height: 195px;
-  background-image: url('https://img.clipartfest.com/28cc8dea7790c78a3b5c0abb08cd0c27_-piglet-piglet_476-281.jpeg');
+.wide {
+  height: 390px;
+  padding: 0;
   background-size: cover;
-  background-position: 50% 50%;
   border: 2px solid white
 }
 
@@ -38,14 +46,23 @@
   float: right
 }
 
+.grid-box-hover {
+  background-color: rgba(30, 30, 30, 0.6);
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity .25s;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
 
-/*for fixing nav link spacing issues => .nav>li>a {
-  padding: 0
-}*/
-
-
-/*
-.grid-img {
-  width: 100%
-}*/
-
+.grid-box-hover:hover {
+  opacity: 1
+}
