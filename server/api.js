@@ -2,7 +2,7 @@
 
 const db = require('APP/db')
 const api = module.exports = require('express').Router()
-const { Product, User, Cart, CartItem, LineItem, Order, Review } = require('../db/models')
+const { Product, User, Cart, LineItem, Order, Review } = require('../db/models')
 
 api
   .get('/heartbeat', (req, res) => res.send({ok: true,}))
@@ -15,6 +15,18 @@ api.get('/products', function(req, res, next) {
     .then(products => res.send(products))
     .catch(next) // EI: yay error-handling in promise chains!
 
+})
+
+// api.get('/test', function(req, res, next) {
+//   LineItem.scope('default').findAll()
+//     .then(items => res.json(items))
+// })
+
+api.get('/test', function(req, res, next) {
+  Order.findById(1)
+    .then(promise => {
+      promise.then(result => {console.log(result)})
+    })
 })
 
 

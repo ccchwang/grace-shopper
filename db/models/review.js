@@ -3,7 +3,8 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const Review = db.define('reviews', {
-  description: Sequelize.TEXT
+  description: Sequelize.TEXT,
+  rating: Sequelize.INTEGER
 })
 
 // EI: ratings? methods or virtual (maybe on Product) for average review score?
