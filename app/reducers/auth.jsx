@@ -27,7 +27,7 @@ export const login = (username, password) =>
     axios.post('/api/auth/login/local',
       {username, password})
       .then(() => dispatch(whoami()))
-      .then(() => browserHistory.push('/login'))
+      .then(() => browserHistory.push('/'))
       .catch(() => dispatch(whoami()))
 
 export const logout = () =>
