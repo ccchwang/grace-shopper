@@ -1,11 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, FormGroup, FormControl, Button } from 'react-bootstrap'
 import { Route, RouteHandler, Link } from 'react-router'
-import { LinkContainer } from 'react-router-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
+import { logout } from '../reducers/auth'
 
-export default function(props) {
+class MyNavbar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.renderLoginSignup = this.renderLoginSignup.bind(this)
+    this.renderLogout = this.renderLogout.bind(this)
+  }
+
+  render () {
     return (
-      <Navbar inverse collapseOnSelect fixedTop id="navbar">
+       <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/home">Cuties</Link>
@@ -14,39 +23,69 @@ export default function(props) {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} href="#">Link</NavItem>
             <NavDropdown eventKey={2} title="Shop" id="basic-nav-dropdown">
               <MenuItem eventKey={2.1}>Kittens</MenuItem>
               <MenuItem eventKey={2.2}>Puppies</MenuItem>
               <MenuItem eventKey={2.3}>Piglets</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={2.3}>Separated link</MenuItem>
             </NavDropdown>
           </Nav>
 
-          <Nav pullRight>
-            <LinkContainer to="/login">
-              <NavItem eventKey={1}>Login</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/signup">
-              <NavItem eventKey={2}>Sign Up</NavItem>
-            </LinkContainer>
-          </Nav>
 
-          <Nav pullRight>
-            <NavItem >
-            <Navbar.Form>
+          {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
+
+
+
+            <Navbar.Form pullLeft>
               <FormGroup>
                 <FormControl type="text" placeholder="Search" />
               </FormGroup>
-              {' '}
               <Button type="submit">Submit</Button>
             </Navbar.Form>
-            </NavItem>
+
+          <Nav pullRight>
+            <LinkContainer to="FillMeInLater">
+             <NavItem eventKey={2}>Cart</NavItem>
+            </LinkContainer>
           </Nav>
 
 
         </Navbar.Collapse>
       </Navbar>
     )
+  }
+
+
+  renderLoginSignup() {
+    return (
+      <Nav pullRight>
+        <LinkContainer to="/login">
+          <NavItem eventKey={1}>Login</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/signup">
+          <NavItem eventKey={2}>Sign Up</NavItem>
+        </LinkContainer>
+      </Nav>
+    )
+  }
+
+  renderLogout() {
+    return (
+      <Nav pullRight>
+        <LinkContainer to="/">
+          <NavItem eventKey={1} onClick={this.props.logout}>Logout</NavItem>
+        </LinkContainer>
+      </Nav>
+    );
+  }
 }
+
+const mapState = ({auth}) => ({auth: auth});
+
+const mapDispatch = dispatch => ({
+  logout: () => {
+    dispatch(logout());
+    // browserHistory.push('/'); // removed to demo logout instant re-render
+  }
+});
+
+export default connect(mapState, mapDispatch)(MyNavbar);
