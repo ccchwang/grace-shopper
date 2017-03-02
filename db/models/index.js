@@ -19,6 +19,7 @@ OAuth.belongsTo(User)
 User.hasOne(OAuth)
 
 User.hasMany(Review)
+Review.belongsTo(User)
 
 Product.hasMany(Review)
 

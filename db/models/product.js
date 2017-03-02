@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const {Review, User} = require('./index')
 
 const Product = db.define('products', {
   name: {
