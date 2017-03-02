@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import ReviewContainer from '../containers/ReviewContainer'
 
 
-export default function({selectedProduct}) {
+export default function({selectedProduct, handleCartAdd, user}) {
 
 
 
@@ -19,7 +19,7 @@ export default function({selectedProduct}) {
             <h3> ${selectedProduct.price} </h3>
             <p> {selectedProduct.description} </p>
             <Button bsStyle="info" className="add-cart-btn">
-              <Link to="/cart"><h4>Add to Cart</h4></Link>
+              <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link>
             </Button>
         </Col>
 

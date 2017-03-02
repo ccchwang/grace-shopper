@@ -8,7 +8,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/products', require('./products'))
-
+  .use('/cart', require('./cart'))
 
 
 // api.get('/test', function(req, res, next) {
