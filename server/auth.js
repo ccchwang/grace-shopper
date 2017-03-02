@@ -1,10 +1,12 @@
 const app = require('APP'), {env} = app
 const debug = require('debug')(`${app.name}:auth`)
 const passport = require('passport')
+// const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('APP/db/models/user')
 const OAuth = require('APP/db/models/oauth')
 const auth = require('express').Router()
+
 
 
 /*************************
@@ -97,6 +99,7 @@ passport.deserializeUser(
 // require.('passport-local').Strategy => a function we can use as a constructor, that takes in a callback
 passport.use(new (require('passport-local').Strategy) (
   (email, password, done) => {
+    console.log("Inside use")
     debug('will authenticate user(email: "%s")', email)
     User.findOne({where: {email}})
       .then(user => {
@@ -121,7 +124,30 @@ passport.use(new (require('passport-local').Strategy) (
 auth.get('/whoami', (req, res) => res.send(req.user))
 
 // POST requests for local signup:
-auth.post('/signup/local', passport.authenticate('local', { successRedirect: '/', }))
+auth.post('/signup/local', function(req, res, next){
+    User.findOrCreate({
+      where: {
+        email: req.body.username
+      },
+      defaults: { // if the user doesn't exist, create including this info
+        password: req.body.password
+      }
+    })
+    .spread((user, created) => {
+      if (created) {
+        // with Passport:
+        req.logIn(user, function (err) {
+          if (err) return next(err);
+          res.json(user);
+        });
+        // // before, without Passport:
+        // req.session.userId = user.id;
+        // res.json(user);
+      } else {
+        res.sendStatus(401); // this user already exists, you cannot sign up
+      }
+    });
+});
 
 // POST requests for local login:
 auth.post('/login/local', passport.authenticate('local', { successRedirect: '/', }))
