@@ -15,6 +15,7 @@ import SingleProductContainer from './containers/SingleProductContainer';
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
+import { receiveReviews } from './reducers/reviews'
 
 
 const loadProducts = () => {
@@ -23,12 +24,16 @@ const loadProducts = () => {
     .catch(console.error)
 }
 
-const loadSingleProduct = (nextState) => {
+const loadSingleProduct = (nextState, replace, done) => {
   axios.get(`/api/products/${nextState.params.productId}`)
-    .then(product => store.dispatch(receiveProduct(product.data)))
+    .then(productInfo => productInfo.data)
+    .then(([product, reviews]) => {
+      store.dispatch(receiveProduct(product));
+      return store.dispatch(receiveReviews(reviews));
+    })
+    .then(() => done())
     .catch(console.error);
 }
-
 
 render (
   <Provider store={store}>

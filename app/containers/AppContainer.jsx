@@ -8,7 +8,7 @@ export default function(props) {
       <div id="body">
         <Navbar />
         { props.children && React.cloneElement(props.children, props) }
-        <Footer />
+        {/*<Footer />*/}
       </div>
     )
 

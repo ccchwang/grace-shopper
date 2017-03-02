@@ -75,6 +75,27 @@
   width: 100%;
 }
 
-.show-grid h1 {
+.show-grid {
   text-align: center;
 }
+
+.product-info  {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+.add-cart-btn a {
+  text-decoration: none;
+  color: white
+}
+
+.add-cart-btn {
+  width: 130px;
+  margin: 0 auto;
+}
+ .rating-stars {
+   font-size: 2em;
+   color: rgb(241, 218, 21);
+}
+
