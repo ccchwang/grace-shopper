@@ -12,6 +12,8 @@ class MyNavbar extends React.Component {
     this.renderLogout = this.renderLogout.bind(this)
   }
 
+
+
   render () {
     return (
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
