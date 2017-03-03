@@ -12,7 +12,7 @@ export const Login = ({ login }) => (
   } }>
 
   <Button className="buffer oauth">
-    <a href="/auth/google" className="btn btn-danger"><span className="fa fa-google-plus"></span>Login with Google</a>
+    <a href="/api/auth/login/google" className="btn btn-danger"><span className="fa fa-google-plus"></span>Login with Google</a>
  </Button>
 
     <FormGroup controlId="formHorizontalEmail">
