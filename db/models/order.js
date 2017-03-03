@@ -5,7 +5,11 @@ const db = require('APP/db')
 
 const Order = db.define('orders', {
   status: Sequelize.STRING,
-  address: Sequelize.TEXT
+  address: Sequelize.TEXT,
+  totalPrice: {
+    type: Sequelize.DECIMAL,
+    defaultValue: 0
+  }
   // totalPrice: {
   //   type: Sequelize.VIRTUAL,
   //   set() {
