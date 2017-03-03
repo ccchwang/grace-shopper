@@ -35,11 +35,17 @@ const seedProducts = () => db.Promise.map([
 {name: "Yarn", description: "Baby orange tabby cat", category: "Cat", quantity: 2, photo: "https://s-media-cache-ak0.pinimg.com/originals/25/6c/c2/256cc2d179ae3fc888c2de1bc4b3b302.jpg", price: 6535},
 {name: "Buster", description: "Small dog", category: "Dog", quantity: 1, photo: "http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg", price: 746},
 {name: "Spike", description: "Baby goat with some attitude", category: "Goat", quantity: 10, photo: "https://s-media-cache-ak0.pinimg.com/736x/44/91/31/449131cabd0f6c51259cf881355368a1.jpg", price: 8901},
-{name: "Legs", description: "Small giraffe", category: "giraffe", quantity: 2, photo: "http://i.imgur.com/Ow7I3kZ.jpg", price: 2335},
+{name: "Legs", description: "Small giraffe", category: "Giraffe", quantity: 2, photo: "http://i.imgur.com/Ow7I3kZ.jpg", price: 2335},
 {name: "Cheese", description: "Best little mouse, comes with swing", category: "Mouse", quantity: 6, photo: "https://s-media-cache-ak0.pinimg.com/736x/db/22/08/db2208f9403af15c21ef4d11a8d233a2.jpg", price: 2335},
 {name: "Snout", description: "Pig and brown piglet. He sure loves his ice cream!", category: "Pig", quantity: 2, photo: "https://s-media-cache-ak0.pinimg.com/originals/ec/1c/7e/ec1c7ef02303d298882238d2944851f4.jpg", price: 1335},
 {name: "Sally", description: "This little lady loves to hang out and snuggle", category: "Monkey", quantity: 3, photo: "https://i.ytimg.com/vi/jM6nHKgX66g/hqdefault.jpg", price: 835},
-{name: "Henry", description: "The best swimmer you will ever find!", category: "Turtle", quantity: 3, photo: "https://img.buzzfeed.com/buzzfeed-static/static/2014-05/enhanced/webdr03/23/13/enhanced-11844-1400866694-9.jpg", price: 8925}
+{name: "Henry", description: "The best swimmer you will ever find!", category: "Turtle", quantity: 3, photo: "https://img.buzzfeed.com/buzzfeed-static/static/2014-05/enhanced/webdr03/23/13/enhanced-11844-1400866694-9.jpg", price: 8925},
+{name: "Charlotte", description: "Cute little nugget", category: "Pig", quantity: 3, photo: "https://i.ytimg.com/vi/1LqyOX12_nQ/maxresdefault.jpg", price: 7000},
+{name: "Tickles", description: "Adventurous and ticklish", category: "Cat", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals-2/cute-baby-animals-2-2.jpg", price: 6500},
+{name: "Dumbo", description: "Scared of mice, great memory", category: "Elephant", quantity: 3, photo: "http://i.dailymail.co.uk/i/pix/2016/08/21/17/3775BD5C00000578-0-image-a-7_1471796003762.jpg", price: 4000},
+{name: "Bob", description: "Kind of an ass", category: "Donkey", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uploads/2014/12/cutest-baby-animals-9__605.jpg", price: 5500},
+{name: "Thumper", description: "Sir Thump-a-lot", category: "Bunny", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/564x/8c/15/38/8c1538ff1e692657a12c55b16af16a7b.jpg", price: 10000},
+
 ], products => db.model('products').create(products))
 
 const seedOrders = () => db.Promise.map([
