@@ -23,6 +23,16 @@ const reducer = (state = initialState, action) => {
       newState.lineItems = action.lineItems
       break;
 
+    case "REMOVE_LINE_ITEM":
+      newState.lineItems = newState.lineItems.filter(item => item.id !== action.lineItemId)
+      break;
+
+    case "UPDATE_LINE_ITEM":
+      let itemToUpdate = newState.lineItems.filter(item => item.id === action.lineItemId)
+      itemToUpdate[0].quantity = action.quantity
+      newState.lineItems = [...newState.lineItems];
+      break;
+
     default: return state;
     }
   return newState
@@ -41,6 +51,21 @@ export const receiveLineItems = (lineItems) => {
   return {
     type: "RECEIVE_LINE_ITEMS",
     lineItems
+  }
+}
+
+export const removeLineItem = (lineItemId) => {
+  return {
+    type: "REMOVE_LINE_ITEM",
+    lineItemId
+  }
+}
+
+export const updateLineItem = (lineItemId, quantity) => {
+  return {
+    type: "UPDATE_LINE_ITEM",
+    lineItemId,
+    quantity
   }
 }
 

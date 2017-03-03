@@ -3,7 +3,7 @@ import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } fr
 import { Link } from 'react-router'
 
 
-export default function({ lineItems }) {
+export default function({ lineItems, handleRemove, handleUpdate }) {
 
   let total = 0;
 
@@ -21,11 +21,12 @@ export default function({ lineItems }) {
           <Col sm={5} md={5} >
             <h3>{item.product.name}</h3>
             <br />
-            <Form inline>
+            <Form inline onSubmit={(e) => handleUpdate(e, item.id)}>
               <FormGroup controlId="formInlineName">
                 <ControlLabel><h4>Quantity: </h4></ControlLabel>
                 {' '}
-                <FormControl className="quantity-form" type="text" defaultValue={item.quantity} />
+                <FormControl className="quantity-form" type="text" defaultValue={item.quantity} name="inputField"/>
+                <Button type="submit" bsStyle='primary'>Update Cart</Button>
               </FormGroup>
             </Form>
           </Col>
@@ -35,7 +36,7 @@ export default function({ lineItems }) {
             </h4>
           </Col>
           <br />
-          <Button bsStyle='danger'>Remove</Button> <Button bsStyle='primary'>Update Cart</Button>
+          <Button bsStyle='danger' onClick={(e) => handleRemove(e, item.id)}>Remove</Button> 
 
         </Row>
         <hr />
@@ -44,7 +45,7 @@ export default function({ lineItems }) {
   })
 
   if (!rows.length) {rows = <h4>You don't have any cuties yet!</h4>}
-  total = total === 0 ? null : '$' + total;
+  total = total === 0 ? null : '$' + total.toFixed(2);
 
   return (
     <Grid className="cart">
