@@ -3,10 +3,20 @@ import {PageHeader, Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormCo
 
 export const Login = ({ login }) => (
   <div className="login-container">
+
+
+
   <Form horizontal onSubmit={evt => {
     evt.preventDefault()
     login(evt.target.email.value, evt.target.password.value)
   } }>
+
+    <FormGroup>
+    <Col smOffset={4}>
+    <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
+    </Button>
+    </Col>
+    </FormGroup>
 
     <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} smOffset={2} sm={2}>

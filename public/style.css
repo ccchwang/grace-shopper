@@ -11,8 +11,7 @@
   padding-top: 125px;
 }
 
-
-#footer {
+/*#footer {
   position: relative;
   margin-top: 20px;
   height: 180px;
@@ -20,12 +19,12 @@
   background-color: lightblue;
   text-align: center;
   vertical-align: middle
-}
+}*/
 
-.login-container {
-  padding-top: 50px;
+#googleBtn {
+  margin-left: 15px;
+  width: 45%;
 }
-
 
 /***HOME PAGE***/
 .grid-box {

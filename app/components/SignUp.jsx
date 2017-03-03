@@ -8,6 +8,13 @@ export const SignUp = ({ signup }) => (
     signup(evt.target.email.value, evt.target.password.value)
   } }>
 
+    <FormGroup>
+      <Col smOffset={4}>
+        <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Signup with Google
+        </Button>
+      </Col>
+    </FormGroup>
+
     <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} smOffset={2} sm={2}>
         Email
