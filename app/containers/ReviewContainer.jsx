@@ -5,7 +5,8 @@ import Reviews from '../components/Reviews'
 export default connect(
   (state) => {
     return {
-      reviews: state.reviews.reviews
+      reviews: state.reviews.reviews,
+      selectedProduct: state.products.selectedProduct
     }
   }
 )(Reviews)

@@ -12,15 +12,25 @@ import WhoAmI from './components/WhoAmI'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
 import SingleProductContainer from './containers/SingleProductContainer';
+import CartContainer from './containers/CartContainer'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
 import { receiveReviews } from './reducers/reviews'
+import { receiveLineItems } from './reducers/cart'
 
 
-const loadProducts = () => {
+const loadProductsAndCartItems = (nextState, replace, done) => {
   axios.get('/api/products')
     .then(products => store.dispatch(receiveProducts(products.data)))
+    .then(() => {
+      let userId = store.getState().auth.id;
+
+      axios.get(`/api/cart/${userId}`)
+          .then(cart => cart.data)
+          .then(cart => store.dispatch(receiveLineItems(cart)))
+    })
+    .then(() => done())
     .catch(console.error)
 }
 
@@ -36,7 +46,6 @@ const loadSingleProduct = (nextState, replace, done) => {
 }
 
 
-
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -44,8 +53,9 @@ render (
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <IndexRedirect to="/home" />
-        <Route path="/home" component={HomePageContainer} onEnter={loadProducts} />
+        <Route path="/home" component={HomePageContainer} onEnter={loadProductsAndCartItems} />
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct}/>
+        <Route path="/cart" component={CartContainer} />
       </Route>
     </Router>
   </Provider>,

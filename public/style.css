@@ -8,7 +8,8 @@
 }
 
 #body {
-  padding-top: 125px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 /*#footer {
@@ -98,3 +99,13 @@
    color: rgb(241, 218, 21);
 }
 
+/* CART */
+
+.cart h3 {
+  margin-top: 5px
+}
+
+.quantity-form {
+  width: 20%;
+  margin: 0 auto
+}

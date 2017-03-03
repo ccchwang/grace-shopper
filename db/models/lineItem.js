@@ -11,16 +11,21 @@ const LineItem = db.define('lineItems', {
       return formatted
     }
   },
-  quantity: Sequelize.INTEGER,
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1
+  },
 }, {
   hooks: {
     afterUpdate: function(lineItem){
-      db.model('orders').findById(lineItem.order_id)
-        .then(order => {
-          let addition = (+order.totalPrice) + (+lineItem.orderedPrice);
-          return order.update({totalPrice: addition})
-        })
-        .catch(console.error)
+      if (lineItem.order_id) {
+        db.model('orders').findById(lineItem.order_id)
+          .then(order => {
+            let addition = (+order.totalPrice) + (+lineItem.orderedPrice);
+            return order.update({totalPrice: addition})
+          })
+          .catch(console.error)
+      }
     }
   },
 

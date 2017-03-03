@@ -14,7 +14,7 @@ const seedReviews = () => db.Promise.map([
     user_id: '1', product_id: '1', rating: '5'
   },
   {description: "Sassy but sweet. She knows she's cute and isn't afraid to flaunt it!",
-    user_id: '2', product_id: '2', rating: '5'
+    user_id: '2', product_id: '2', rating: '4'
   },
   {description: 'Irresistible charm! Looks especially dapper in a top hat and bow tie.',
     user_id: '3', product_id: '3', rating: '5'
@@ -23,8 +23,11 @@ const seedReviews = () => db.Promise.map([
     user_id: '4', product_id: '4', rating: '5'
   },
   {description: "Likes soft blankets, rolling around on the bed, and being the star of the show!",
-    user_id: '5', product_id: '5', rating: '5'
+    user_id: '5', product_id: '5', rating: '4'
   },
+  {description: "Sorta meh but still lovable!", user_id: '1', product_id: '6', rating: '3'  },
+  {description: "Will do the trick!", user_id: '3', product_id: '8', rating: '3'},
+  {description: "Sweetest little pig in the world! Best decision of my life!!", user_id: '3', product_id: '7', rating: '5'}
 ], review => db.model('reviews').create(review))
 
 const seedProducts = () => db.Promise.map([
