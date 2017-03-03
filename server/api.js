@@ -4,11 +4,11 @@ const db = require('APP/db')
 const api = module.exports = require('express').Router()
 
 api
-  .get('/heartbeat', (req, res) => res.send({ok: true,}))
+  .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/products', require('./products'))
-
+  .use('/cart', require('./cart'))
 
 
 // api.get('/test', function(req, res, next) {
@@ -16,12 +16,12 @@ api
 //     .then(items => res.json(items))
 // })
 
-api.get('/test', function(req, res, next) {
-  Order.findById(1)
-    .then(promise => {
-      promise.then(result => {console.log(result)})
-    })
-})
+// api.get('/test', function(req, res, next) {
+//   Order.findById(1)
+//     .then(promise => {
+//       promise.then(result => {console.log(result)})
+//     })
+// })
 
 
 // No routes matched? 404.

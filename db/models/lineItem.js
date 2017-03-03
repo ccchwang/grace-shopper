@@ -13,6 +13,17 @@ const LineItem = db.define('lineItems', {
   },
   quantity: Sequelize.INTEGER,
 }, {
+  hooks: {
+    afterUpdate: function(lineItem){
+      db.model('orders').findById(lineItem.order_id)
+        .then(order => {
+          let addition = (+order.totalPrice) + (+lineItem.orderedPrice);
+          return order.update({totalPrice: addition})
+        })
+        .catch(console.error)
+    }
+  },
+
   scopes: {
     default: {
       include: [{all: true}]

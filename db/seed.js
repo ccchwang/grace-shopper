@@ -17,13 +17,13 @@ const seedReviews = () => db.Promise.map([
     user_id: '2', product_id: '2', rating: '5'
   },
   {description: 'Irresistible charm! Looks especially dapper in a top hat and bow tie.',
-    user_id: '3', product_id: '2', rating: '4'
+    user_id: '3', product_id: '3', rating: '5'
   },
   {description: "Feeling down?? Wondering the meaning of life?? This little cutie is an instant pick-me-up and will brighten anyone's day!",
-    user_id: '4', product_id: '3', rating: '5'
+    user_id: '4', product_id: '4', rating: '5'
   },
   {description: "Likes soft blankets, rolling around on the bed, and being the star of the show!",
-    user_id: '5', product_id: '5', rating: '4'
+    user_id: '5', product_id: '5', rating: '5'
   },
 ], review => db.model('reviews').create(review))
 
@@ -40,11 +40,11 @@ const seedProducts = () => db.Promise.map([
 ], products => db.model('products').create(products))
 
 const seedOrders = () => db.Promise.map([
-  {status: 'shipped', address: '5 Hanover Square', user_id: '1'},
-  {status: 'shipping', address: '100 Broadway Street', user_id: '2'},
-  {status: 'delivered', address: '25 Kenmare Street 12:39:46.47-05', user_id: '3'},
-  {status: 'shipped', address: '10 Walnut Avenue', user_id: '4'},
-  {status: 'delivered', address: '50 Wall Street', user_id: '5'},
+  {status: 'shipped', totalPrice: '6.83', address: '5 Hanover Square', user_id: '1'},
+  {status: 'shipping', totalPrice: '3.04', address: '100 Broadway Street', user_id: '2'},
+  {status: 'delivered', totalPrice: '1.29', address: '25 Kenmare Street 12:39:46.47-05', user_id: '3'},
+  {status: 'shipped', totalPrice: '3.84', address: '10 Walnut Avenue', user_id: '4'},
+  {status: 'delivered', totalPrice: '9.66', address: '50 Wall Street', user_id: '5'},
 ], orders => db.model('orders').create(orders))
 
 const seedLineItems = () => db.Promise.map([
