@@ -11,9 +11,12 @@ export const Login = ({ login }) => (
     login(evt.target.email.value, evt.target.password.value)
   } }>
 
-  <Button className="buffer oauth">
-    <a href="/api/auth/login/google" className="btn btn-danger"><span className="fa fa-google-plus"></span>Login with Google</a>
- </Button>
+    <FormGroup>
+    <Col smOffset={4}>
+    <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
+    </Button>
+    </Col>
+    </FormGroup>
 
     <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} smOffset={2} sm={2}>
