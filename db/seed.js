@@ -11,28 +11,32 @@ const seedUsers = () => db.Promise.map([
 
 const seedReviews = () => db.Promise.map([
   {description: "The cutest, most fluffiest ball of love you've ever seen! Will snuggle you for hours!",
-    user_id: '1', product_id: '1', rating: '1'
+    user_id: '1', product_id: '1', rating: '5'
   },
   {description: "Sassy but sweet. She knows she's cute and isn't afraid to flaunt it!",
-    user_id: '2', product_id: '2', rating: '1'
+    user_id: '2', product_id: '2', rating: '5'
   },
   {description: 'Irresistible charm! Looks especially dapper in a top hat and bow tie.',
-    user_id: '3', product_id: '2', rating: '1'
+    user_id: '3', product_id: '2', rating: '4'
   },
   {description: "Feeling down?? Wondering the meaning of life?? This little cutie is an instant pick-me-up and will brighten anyone's day!",
-    user_id: '4', product_id: '3', rating: '1'
+    user_id: '4', product_id: '3', rating: '5'
   },
   {description: "Likes soft blankets, rolling around on the bed, and being the star of the show!",
-    user_id: '5', product_id: '5', rating: '1'
+    user_id: '5', product_id: '5', rating: '4'
   },
 ], review => db.model('reviews').create(review))
 
 const seedProducts = () => db.Promise.map([
-{name: 'Wilber', description: "A cute little piglet in boots", category: "Pig", quantity: 3, photo: "http://img3.rnkr-static.com/user_node_img/50006/1000109139/870/one-funny-mini-pig-photo-u1.jpg", price: 536},
-{name: "Yarn", description: "Baby orange tabby cat", category: "Cat", quantity: 2, photo: "https://s-media-cache-ak0.pinimg.com/originals/25/6c/c2/256cc2d179ae3fc888c2de1bc4b3b302.jpg", price: 635},
+{name: 'Wilber', description: "A cute little piglet in boots", category: "Pig", quantity: 3, photo: "http://img3.rnkr-static.com/user_node_img/50006/1000109139/870/one-funny-mini-pig-photo-u1.jpg", price: 1536},
+{name: "Yarn", description: "Baby orange tabby cat", category: "Cat", quantity: 2, photo: "https://s-media-cache-ak0.pinimg.com/originals/25/6c/c2/256cc2d179ae3fc888c2de1bc4b3b302.jpg", price: 6535},
 {name: "Buster", description: "Small dog", category: "Dog", quantity: 1, photo: "http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg", price: 746},
-{name: "Spike", description: "Baby goat with some attitude", category: "Goat", quantity: 10, photo: "https://s-media-cache-ak0.pinimg.com/736x/44/91/31/449131cabd0f6c51259cf881355368a1.jpg", price: 635},
-{name: "Legs", description: "Small giraffe", category: "giraffe", quantity: 2, photo: "http://i.imgur.com/Ow7I3kZ.jpg", price: 235},
+{name: "Spike", description: "Baby goat with some attitude", category: "Goat", quantity: 10, photo: "https://s-media-cache-ak0.pinimg.com/736x/44/91/31/449131cabd0f6c51259cf881355368a1.jpg", price: 8901},
+{name: "Legs", description: "Small giraffe", category: "giraffe", quantity: 2, photo: "http://i.imgur.com/Ow7I3kZ.jpg", price: 2335},
+{name: "Cheese", description: "Best little mouse, comes with swing", category: "Mouse", quantity: 6, photo: "https://s-media-cache-ak0.pinimg.com/736x/db/22/08/db2208f9403af15c21ef4d11a8d233a2.jpg", price: 2335},
+{name: "Snout", description: "Pig and brown piglet. He sure loves his ice cream!", category: "Pig", quantity: 2, photo: "https://s-media-cache-ak0.pinimg.com/originals/ec/1c/7e/ec1c7ef02303d298882238d2944851f4.jpg", price: 1335},
+{name: "Sally", description: "This little lady loves to hang out and snuggle", category: "Monkey", quantity: 3, photo: "https://i.ytimg.com/vi/jM6nHKgX66g/hqdefault.jpg", price: 835},
+{name: "Henry", description: "The best swimmer you will ever find!", category: "Turtle", quantity: 3, photo: "https://img.buzzfeed.com/buzzfeed-static/static/2014-05/enhanced/webdr03/23/13/enhanced-11844-1400866694-9.jpg", price: 8925}
 ], products => db.model('products').create(products))
 
 const seedOrders = () => db.Promise.map([
