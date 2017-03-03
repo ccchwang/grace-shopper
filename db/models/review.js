@@ -16,7 +16,21 @@ const Review = db.define('reviews', {
         return month + ' ' + day + ', ' + year;
       }
       review.date = prettyDate(""+review.created_at)
-    }
+    },
+    afterCreate: function(review){
+      let findProduct =  db.model('products').findOne({where: {id: review.product_id}});
+      let findReviews = this.findAll({where: {product_id: review.product_id}});
+
+      Promise.all(([findProduct, findReviews]))
+        .then(([product, reviews]) => {
+          let sum = reviews.reduce((acc, curr) => {return acc + curr.rating}, 0);
+          let average = Math.floor(sum / reviews.length);
+
+          return product.update({averageRating: average})
+        })
+        .catch(console.error)
+
+  }
   }
 })
 

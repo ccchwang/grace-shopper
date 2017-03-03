@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
   const newState = Object.assign({}, state)
 
   switch (action.type) {
-    case "RECEIVE_LINEITEM":
+    case "RECEIVE_LINE_ITEM":
       newState.lineItems = [...newState.lineItems, action.lineItem]
       break;
 
@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
 
 export const receiveLineItem = (lineItem) => {
   return {
-    type: "RECEIVE_LINEITEM",
+    type: "RECEIVE_LINE_ITEM",
     lineItem
   }
 }

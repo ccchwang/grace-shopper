@@ -16,9 +16,7 @@ export default connect(
       handleCartAdd: function(e, user, selectedProduct) {
         e.preventDefault();
         axios.post(`/api/cart/${user.id}`, {product: selectedProduct})
-          .then(createdLineItem => {
-            dispatch(receiveLineItem(createdLineItem.data))
-          })
+          .then(createdLineItem => dispatch(receiveLineItem(createdLineItem.data)))
           .catch(console.error)
       }
     }

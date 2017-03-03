@@ -25,6 +25,7 @@ const Product = db.define('products', {
     type: Sequelize.STRING,
     defaultValue: "http://placekitten.com/200/300",
   },
+  averageRating: Sequelize.INTEGER,
   price: {
     type: Sequelize.INTEGER,
     defaultValue: 0,

@@ -35,12 +35,17 @@ const loadSingleProduct = (nextState, replace, done) => {
     .catch(console.error);
 }
 
+const test = () => {
+  axios.get(`/api/test`)
+    .then(review => review.data)
+    .catch(console.error)
+}
 
 
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={AppContainer}>
+      <Route path="/" component={AppContainer} onEnter={test}>
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <IndexRedirect to="/home" />
