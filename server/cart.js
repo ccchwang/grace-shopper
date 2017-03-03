@@ -11,14 +11,20 @@ api.post('/:userId', (req, res, next) => {
 
     Cart.findOrCreate({where: {user_id: req.params.userId}})
         .then(([cart, _]) => {
-            return LineItem.create({
-                quantity: 1,
+            return LineItem.findOrCreate({where: {
                 product_id: product.id,
                 cart_id: cart.id
-            })
+            }})
         })
-        .then(createdLine => LineItem.scope('default').findById(createdLine.id))
-        .then(created => res.send(created))
+        .then(([line, isCreated]) => {
+            if (!isCreated) {
+                return line.update({quantity: line.quantity + 1})
+            } else {
+                return line
+            }
+        })
+        .then(line => LineItem.scope('default').findById(line.id))
+        .then(line => res.send(line))
         .catch(next)
 })
 
@@ -26,7 +32,7 @@ api.get('/:userId', (req, res, next) => {
     Cart.findOne({where: {user_id: req.params.userId}})
         .then(cart => {
             if (cart) return LineItem.scope('default').findAll({where: {cart_id: cart.id}})
-            else {res.send([])}
+            else {return []}
         })
         .then(lineItems => res.send(lineItems))
         .catch(next)

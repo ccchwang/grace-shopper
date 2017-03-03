@@ -43,7 +43,10 @@ class MyNavbar extends React.Component {
 
           <Nav pullRight>
             <LinkContainer to="/cart">
-             <NavItem eventKey={2}>Cart ({this.props.lineItems.length}) </NavItem>
+             <NavItem eventKey={2}>Cart ({this.props.lineItems.reduce((acc, currentItem) => {
+                  return acc + currentItem.quantity
+               }, 0)})
+            </NavItem>
             </LinkContainer>
           </Nav>
 

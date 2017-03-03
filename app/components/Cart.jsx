@@ -5,7 +5,12 @@ import { Link } from 'react-router'
 
 export default function({ lineItems }) {
 
-  const rows = lineItems && lineItems.map(item => {
+  let total = 0;
+
+  let rows = lineItems && lineItems.map(item => {
+    let price = (item.product.price * item.quantity).toFixed(2);
+    total += +price;
+
     return (
       <div key={item.id} >
         <Row className="show-grid">
@@ -26,7 +31,8 @@ export default function({ lineItems }) {
           </Col>
 
           <Col sm={2} md={2}>
-            <h4>${item.product.price}</h4>
+            <h4>${price}
+            </h4>
           </Col>
           <br />
           <Button bsStyle='danger'>Remove</Button> <Button bsStyle='primary'>Update Cart</Button>
@@ -36,6 +42,9 @@ export default function({ lineItems }) {
       </div>
     )
   })
+
+  if (!rows.length) {rows = <h4>You don't have any cuties yet!</h4>}
+  total = total === 0 ? null : '$' + total;
 
   return (
     <Grid className="cart">
@@ -48,7 +57,7 @@ export default function({ lineItems }) {
        <Row className="show-grid">
          <Col sm={2} md={2} />
          <Col sm={2} md={5} />
-         <Col sm={2} md={2}>price here</Col>
+         <Col sm={2} md={2}><h4>{total}</h4></Col>
          <Button bsStyle='info'>PROCEED TO CHECKOUT</Button>
        </Row>
     </Grid>

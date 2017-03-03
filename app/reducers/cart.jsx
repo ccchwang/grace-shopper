@@ -11,7 +11,12 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case "RECEIVE_LINE_ITEM":
-      newState.lineItems = [...newState.lineItems, action.lineItem]
+      let duplicate = newState.lineItems.filter(item => item.id === action.lineItem.id)
+      if (duplicate.length) {
+        duplicate[0].quantity += 1;
+        newState.lineItems = [...newState.lineItems];
+      }
+      else { newState.lineItems = [...newState.lineItems, action.lineItem] }
       break;
 
     case "RECEIVE_LINE_ITEMS":
