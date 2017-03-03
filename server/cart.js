@@ -38,5 +38,14 @@ api.get('/:userId', (req, res, next) => {
         .catch(next)
 })
 
+api.delete(`/item/:lineItemId`, (req, res, next) => {
+    LineItem.destroy({where: {id: req.params.lineItemId}})
+        .then(destroyed => res.sendStatus(204))
+        .catch(next)
+})
 
-
+api.put(`/item/:lineItemId`, (req, res, next) => {
+    LineItem.update({quantity: req.body.newQuantity}, {where: {id: req.params.lineItemId}})
+        .then(updated => res.send(req.body.newQuantity))
+        .catch(next)
+})
