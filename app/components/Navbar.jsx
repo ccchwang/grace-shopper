@@ -32,10 +32,7 @@ class MyNavbar extends React.Component {
             </NavDropdown>
           </Nav>
 
-
           {this.props.auth ? this.renderLogout() : this.renderLoginSignup()}
-
-
 
             <Navbar.Form pullLeft>
               <FormGroup>
@@ -45,8 +42,8 @@ class MyNavbar extends React.Component {
             </Navbar.Form>
 
           <Nav pullRight>
-            <LinkContainer to="FillMeInLater">
-             <NavItem eventKey={2}>Cart</NavItem>
+            <LinkContainer to="/cart">
+             <NavItem eventKey={2}>Cart ({this.props.lineItems.length}) </NavItem>
             </LinkContainer>
           </Nav>
 
@@ -81,7 +78,7 @@ class MyNavbar extends React.Component {
   }
 }
 
-const mapState = ({auth}) => ({auth: auth});
+const mapState = ({auth, cart}) => ({auth: auth, lineItems: cart.lineItems});
 
 const mapDispatch = dispatch => ({
   logout: () => {

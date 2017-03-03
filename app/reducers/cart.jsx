@@ -14,6 +14,10 @@ const reducer = (state = initialState, action) => {
       newState.lineItems = [...newState.lineItems, action.lineItem]
       break;
 
+    case "RECEIVE_LINE_ITEMS":
+      newState.lineItems = action.lineItems
+      break;
+
     default: return state;
     }
   return newState
@@ -25,6 +29,13 @@ export const receiveLineItem = (lineItem) => {
   return {
     type: "RECEIVE_LINE_ITEM",
     lineItem
+  }
+}
+
+export const receiveLineItems = (lineItems) => {
+  return {
+    type: "RECEIVE_LINE_ITEMS",
+    lineItems
   }
 }
 

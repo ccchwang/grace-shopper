@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 
-export default function(props) {
+export default function({ reviews, selectedProduct }) {
 
-  const rows = props.reviews && props.reviews.map(review => {
+  const rows = reviews && reviews.map(review => {
     return (
       <div key={review.id} >
         <Row className="show-grid">
@@ -13,11 +13,8 @@ export default function(props) {
 
           <Col sm={12} md={8} >
             <div className="rating-stars">
-              <span>★</span>
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
+              { `★`.repeat(review.rating) }
+              { `☆`.repeat(5-review.rating) }
             </div>
             <br />
             {review.description}

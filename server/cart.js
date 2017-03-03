@@ -17,7 +17,18 @@ api.post('/:userId', (req, res, next) => {
                 cart_id: cart.id
             })
         })
-        .then(createdLine => res.send(createdLine))
+        .then(createdLine => LineItem.scope('default').findById(createdLine.id))
+        .then(created => res.send(created))
+        .catch(next)
+})
+
+api.get('/:userId', (req, res, next) => {
+    Cart.findOne({where: {user_id: req.params.userId}})
+        .then(cart => {
+            if (cart) return LineItem.scope('default').findAll({where: {cart_id: cart.id}})
+            else {res.send([])}
+        })
+        .then(lineItems => res.send(lineItems))
         .catch(next)
 })
 
