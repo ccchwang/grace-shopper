@@ -1,12 +1,12 @@
 import React from 'react'
 import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router'
+import OrderContainer from '../containers/OrderContainer'
+import { LinkContainer } from 'react-router-bootstrap'
 
+export default function ({lineItems}) {
 
-export default function({ lineItems }) {
-
-  let total = 0;
+let total = 0;
 
   let rows = lineItems && lineItems.map(item => {
     let price = (item.product.price * item.quantity).toFixed(2);
@@ -24,10 +24,9 @@ export default function({ lineItems }) {
             <br />
             <Form inline>
               <FormGroup controlId="formInlineName">
-                <ControlLabel><h4>Quantity: </h4></ControlLabel>
-                {' '}
-                <FormControl className="quantity-form" type="text" defaultValue={item.quantity} />
-              </FormGroup>
+                <ControlLabel><h4>Quantity: {item.quantity}</h4></ControlLabel>
+
+                </FormGroup>
             </Form>
           </Col>
 
@@ -36,7 +35,6 @@ export default function({ lineItems }) {
             </h4>
           </Col>
           <br />
-          <Button bsStyle='danger'>Remove</Button> <Button bsStyle='primary'>Update Cart</Button>
 
         </Row>
         <hr />
@@ -44,14 +42,12 @@ export default function({ lineItems }) {
     )
   })
 
-  if (!rows.length) {rows = <h4>You don't have any cuties yet!</h4>}
-  total = total === 0 ? null : '$' + total;
-
   return (
-    <Grid className="cart">
-      <h1>Your Cart</h1>
+    <Grid className="order">
+      <h1>Enter Shipping Info</h1>
       <br />
       <br />
+      <h1>Order Info: </h1>
        <Row className="show-grid">
          { rows }
        </Row>
@@ -59,9 +55,9 @@ export default function({ lineItems }) {
          <Col sm={2} md={2} />
          <Col sm={2} md={5} />
          <Col sm={2} md={2}><h4>{total}</h4></Col>
-          <LinkContainer to="/order" >
-            <Button bsStyle='info'>
-              PROCEED TO CHECKOUT
+          <LinkContainer to="/SOMETHINGHERE" >
+            <Button bsStyle='warning'>
+              Place Order
             </Button>
           </LinkContainer>
 

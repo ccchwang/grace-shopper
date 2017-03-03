@@ -13,6 +13,7 @@ import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
 import SingleProductContainer from './containers/SingleProductContainer';
 import CartContainer from './containers/CartContainer'
+import OrderContainer from './containers/OrderContainer'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
@@ -55,7 +56,8 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePageContainer} onEnter={loadProductsAndCartItems} />
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct}/>
-        <Route path="/cart" component={CartContainer} />
+        <Route path="/cart" component={CartContainer} onEnter={loadProductsAndCartItems} />
+        <Route path="/order" component={OrderContainer} onEnter={loadProductsAndCartItems}/>
       </Route>
     </Router>
   </Provider>,
