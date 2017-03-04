@@ -26,6 +26,7 @@ api.get('/:productId', function (req, res, next) {
       .catch(next)
 })
 
+
 // api.get('/products/:productId', function (req, res, next) {
 //   Review.scope('user').findAll()
 //     .then(reviews => console.log(reviews))

@@ -8,11 +8,12 @@ import axios from 'axios'
 import store from './store'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import WhoAmI from './components/WhoAmI'
+// import WhoAmI from './components/WhoAmI'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
-import SingleProductContainer from './containers/SingleProductContainer';
+import SingleProductContainer from './containers/SingleProductContainer'
 import CartContainer from './containers/CartContainer'
+// import FilteredCategoryContainer from './containers/FilteredCategoryContainer'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
@@ -45,6 +46,13 @@ const loadSingleProduct = (nextState, replace, done) => {
     .catch(console.error);
 }
 
+const loadCategorizedProducts = (nextState, replace, done) => {
+  axios.get(`/api/category/${nextState.params.categoryName}`)
+    .then(products => store.dispatch(receiveProducts(products.data)))
+    .then(() => done())
+    .catch(console.error)
+}
+
 
 render (
   <Provider store={store}>
@@ -55,6 +63,7 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomePageContainer} onEnter={loadProductsAndCartItems} />
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct}/>
+        <Route path="/category/:categoryName" component={HomePageContainer} onEnter={loadCategorizedProducts} />
         <Route path="/cart" component={CartContainer} />
       </Route>
     </Router>
