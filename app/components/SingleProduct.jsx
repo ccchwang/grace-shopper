@@ -16,6 +16,7 @@ export default function({selectedProduct, handleCartAdd, user}) {
         </Col>
         <Col sm={12} md={7} className="product-info">
             <h1> {selectedProduct.name} </h1>
+            <p> {selectedProduct.category} </p>
             <h3> ${selectedProduct.price} </h3>
             <p> {selectedProduct.description} </p>
             <Button bsStyle="info" className="add-cart-btn">

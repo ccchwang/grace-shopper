@@ -15,7 +15,9 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
       <div key={item.id} >
         <Row className="show-grid">
           <Col sm={2} md={2} >
-            <img className="image-responsive" src={item.product.photo} />
+            <Link to={`products/${item.product.id}`}>
+              <img className="image-responsive" src={item.product.photo} />
+            </Link>
           </Col>
 
           <Col sm={5} md={5} >
@@ -36,7 +38,7 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
             </h4>
           </Col>
           <br />
-          <Button bsStyle='danger' onClick={(e) => handleRemove(e, item.id)}>Remove</Button> 
+          <Button bsStyle='danger' onClick={(e) => handleRemove(e, item.id)}>Remove</Button>
 
         </Row>
         <hr />

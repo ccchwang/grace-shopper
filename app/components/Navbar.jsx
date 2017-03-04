@@ -26,9 +26,15 @@ class MyNavbar extends React.Component {
         <Navbar.Collapse>
           <Nav>
             <NavDropdown eventKey={2} title="Shop" id="basic-nav-dropdown">
-              <MenuItem eventKey={2.1}>Kittens</MenuItem>
-              <MenuItem eventKey={2.2}>Puppies</MenuItem>
-              <MenuItem eventKey={2.3}>Piglets</MenuItem>
+              <LinkContainer to="/category/pig">
+                <MenuItem eventKey={2.1} href="/category/pig">Piglets</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/cat">
+                <MenuItem eventKey={2.2} href="/category/cat">Kittens</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/dog">
+                <MenuItem eventKey={2.3} href="/category/dog">Puppies</MenuItem>
+              </LinkContainer>
             </NavDropdown>
           </Nav>
 
