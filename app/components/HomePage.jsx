@@ -10,7 +10,7 @@ export default function(props) {
     if (index === 0 || index % 14 === 0) {
       return (
         <Col style={gridBackground} sm={6} md={6} className="wide grid-box" key={product.id} >
-          <Link to={`products/${product.id}`}>
+          <Link to={`/products/${product.id}`}>
             <div className='grid-box-hover'><h3>{product.name}<br />${product.price}</h3></div>
           </Link>
         </Col>
@@ -19,7 +19,7 @@ export default function(props) {
     else if (index === 10 || index % 14 === 10) {
       return (
         <Col style={gridBackground} sm={6} md={6} className="wide grid-box float-right" key={product.id} >
-          <Link to={`products/${product.id}`}>
+          <Link to={`/products/${product.id}`}>
             <div className='grid-box-hover'><h3>{product.name}<br />${product.price}</h3></div>
           </Link>
         </Col>
@@ -27,7 +27,7 @@ export default function(props) {
     }
     else {
       return <Col style={gridBackground} sm={6} md={2} className="grid-box" key={product.id}>
-        <Link to={`products/${product.id}`}>
+        <Link to={`/products/${product.id}`}>
           <div className='grid-box-hover'><h3>{product.name}<br />${product.price}</h3></div>
         </Link>
       </Col>

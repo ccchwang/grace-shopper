@@ -27,13 +27,28 @@ class MyNavbar extends React.Component {
           <Nav>
             <NavDropdown eventKey={2} title="Shop" id="basic-nav-dropdown">
               <LinkContainer to="/category/pig">
-                <MenuItem eventKey={2.1} href="/category/pig">Piglets</MenuItem>
+                <MenuItem eventKey={2.1}>Piglets</MenuItem>
               </LinkContainer>
               <LinkContainer to="/category/cat">
-                <MenuItem eventKey={2.2} href="/category/cat">Kittens</MenuItem>
+                <MenuItem eventKey={2.2}>Kittens</MenuItem>
               </LinkContainer>
               <LinkContainer to="/category/dog">
-                <MenuItem eventKey={2.3} href="/category/dog">Puppies</MenuItem>
+                <MenuItem eventKey={2.3}>Puppies</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/bunny">
+                <MenuItem eventKey={2.3}>Bunnies</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/elephant">
+                <MenuItem eventKey={2.3}>Elephants</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/goat">
+                <MenuItem eventKey={2.3}>Goats</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/monkey">
+                <MenuItem eventKey={2.3}>Monkeys</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/category/turtle">
+                <MenuItem eventKey={2.3}>Turtles</MenuItem>
               </LinkContainer>
             </NavDropdown>
           </Nav>
