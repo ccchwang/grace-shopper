@@ -53,17 +53,20 @@ OAuth.V2 = (accessToken, refreshToken, profile, done) =>
       _saveProfile: oauth.save(),
     })
   })
-  .then(({ oauth, user }) => user ||
-    User.create({
-      name: profile.displayName,
-      email: profile.emails[0].value
-    })
-    .then(user => db.Promise.props({
-      user,
-      _setOauthUser: oauth.setUser(user)
-    }))
-    .then(({user}) => user)
-  )
+  .then(({ oauth, user }) => {
+    let email = profile.emails ? profile.emails[0].value : "";
+
+    return user ||
+      User.create({
+        name: profile.displayName,
+        email: email
+      })
+      .then(user => db.Promise.props({
+        user,
+        _setOauthUser: oauth.setUser(user)
+      }))
+      .then(({user}) => user)
+  })
   .then(user => done(null, user))
   .catch(done)
 

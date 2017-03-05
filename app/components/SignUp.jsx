@@ -10,7 +10,14 @@ export const SignUp = ({ signup }) => (
 
     <FormGroup>
       <Col smOffset={4}>
-        <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Signup with Google
+        <Button className="buffer oauth provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Signup with Google
+        </Button>
+      </Col>
+    </FormGroup>
+
+    <FormGroup>
+      <Col smOffset={4}>
+        <Button className="buffer oauth provider-login-btn" bsStyle="info" href="/api/auth/login/facebook" bsSize="large">Signup with Facebook
         </Button>
       </Col>
     </FormGroup>

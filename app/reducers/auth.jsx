@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router';
+import { receiveLineItems } from './cart';
 
 const reducer = (state=null, action) => {
   switch(action.type) {
@@ -34,6 +35,7 @@ export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
       .then(() => dispatch(whoami()))
+      .then(() => dispatch(receiveLineItems([])))  //to clear cart in store after local logout
       .catch(() => dispatch(whoami()))
 
 export const whoami = () =>
