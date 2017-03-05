@@ -4,6 +4,7 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const Order = db.define('orders', {
+  name: Sequelize.STRING,
   status: Sequelize.STRING,
   address: Sequelize.TEXT,
   totalPrice: {

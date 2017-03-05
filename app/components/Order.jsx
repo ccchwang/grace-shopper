@@ -3,6 +3,7 @@ import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } fr
 import { Link } from 'react-router'
 import OrderContainer from '../containers/OrderContainer'
 import { LinkContainer } from 'react-router-bootstrap'
+import ShippingAddressContainer from '../containers/ShippingAddressContainer'
 
 export default function ({lineItems}) {
 
@@ -16,7 +17,9 @@ let total = 0;
       <div key={item.id} >
         <Row className="show-grid">
           <Col sm={2} md={2} >
-            <img className="image-responsive" src={item.product.photo} />
+            <Link to={`products/${item.product.id}`}>
+              <img className="image-responsive" src={item.product.photo} />
+            </Link>
           </Col>
 
           <Col sm={5} md={5} >
@@ -25,14 +28,12 @@ let total = 0;
             <Form inline>
               <FormGroup controlId="formInlineName">
                 <ControlLabel><h4>Quantity: {item.quantity}</h4></ControlLabel>
-
                 </FormGroup>
             </Form>
           </Col>
 
           <Col sm={2} md={2}>
-            <h4>${price}
-            </h4>
+            <h4>${price}</h4>
           </Col>
           <br />
 
@@ -44,17 +45,32 @@ let total = 0;
 
   return (
     <Grid className="order">
-      <h1>Enter Shipping Info</h1>
+      <h1>Enter Shipping Address:</h1>
+           <ShippingAddressContainer />
+
       <br />
-      <br />
-      <h1>Order Info: </h1>
+
+      <h1>Review Items: </h1>
+        <Row className="show-grid">
+          <Col sm={2} md={2} />
+          <Col sm={2} md={5} />
+          <Col sm={2} md={2} />
+            <LinkContainer to="/cart" >
+              <Button>Edit Order</Button>
+            </LinkContainer>
+        </Row>
+
        <Row className="show-grid">
          { rows }
        </Row>
        <Row className="show-grid">
          <Col sm={2} md={2} />
-         <Col sm={2} md={5} />
-         <Col sm={2} md={2}><h4>{total}</h4></Col>
+         <Col sm={5} md={5} >
+           <h4>Total Price:</h4>
+         </Col>
+         <Col sm={2} md={2}>
+           <h4>{total}</h4>
+          </Col>
           <LinkContainer to="/SOMETHINGHERE" >
             <Button bsStyle='warning'>
               Place Order
