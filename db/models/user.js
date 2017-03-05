@@ -10,7 +10,6 @@ const User = db.define('users', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false,
     validate: {
 			isEmail: true,
 			notEmpty: true,

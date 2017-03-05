@@ -99,7 +99,7 @@ passport.deserializeUser(
 // require.('passport-local').Strategy => a function we can use as a constructor, that takes in a callback
 passport.use(new (require('passport-local').Strategy) (
   (email, password, done) => {
-    console.log("Inside use")
+
     debug('will authenticate user(email: "%s")', email)
     User.findOne({where: {email}})
       .then(user => {
@@ -154,6 +154,8 @@ auth.post('/login/local', passport.authenticate('local', { successRedirect: '/',
 
 // GET requests for OAuth login:
 // Register this route as a callback URL with OAuth provider
+
+//when user clicks 'sign up with fb', makes GET request to this url (/api/auth/login/facebook). passport then autoredirects user to fb login. after successful login, fb redirects user to this same url. passport then calls the callback fn specified when we created our fb strategy (OAuth.V2 in oauth model), which will find or create that user, then pass it along to passport to serialize.
 auth.get('/login/:strategy', (req, res, next) =>
   passport.authenticate(req.params.strategy, {
     scope: 'email',

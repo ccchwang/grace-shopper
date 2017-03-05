@@ -13,7 +13,14 @@ export const Login = ({ login }) => (
 
     <FormGroup>
     <Col smOffset={4}>
-    <Button id="googleBtn" className="buffer oauth" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
+    <Button className="buffer oauth provider-login-btn" bsStyle="danger" href="/api/auth/login/google" bsSize="large">Login with Google
+    </Button>
+    </Col>
+    </FormGroup>
+
+    <FormGroup>
+    <Col smOffset={4}>
+    <Button className="buffer oauth provider-login-btn" bsStyle="info" href="/api/auth/login/facebook" bsSize="large">Login with Facebook
     </Button>
     </Col>
     </FormGroup>
@@ -57,7 +64,4 @@ export const Login = ({ login }) => (
 import {login} from 'APP/app/reducers/auth'
 import {connect} from 'react-redux'
 
-export default connect (
-  state => ({}),
-  {login},
-) (Login)
+export default connect(null, {login})(Login)

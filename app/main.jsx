@@ -27,9 +27,11 @@ const loadProductsAndCartItems = (nextState, replace, done) => {
     .then(() => {
       let userId = store.getState().auth.id;
 
-      axios.get(`/api/cart/${userId}`)
+      if (userId) {
+        axios.get(`/api/cart/${userId}`)
           .then(cart => cart.data)
           .then(cart => store.dispatch(receiveLineItems(cart)))
+      }
     })
     .then(() => done())
     .catch(console.error)
