@@ -1,11 +1,8 @@
 import { connect } from 'react-redux'
-import Order from '../components/Order'
 import React, { Component } from 'react'
 import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } from 'react-bootstrap'
 import { Link } from 'react-router'
-//import OrderContainer from '../containers/OrderContainer'
 import { LinkContainer } from 'react-router-bootstrap'
-import ShippingAddressContainer from './ShippingAddressContainer'
 import ShippingAddress from "../components/ShippingAddress"
 
 
@@ -34,11 +31,9 @@ class OrderContainer extends Component {
   }
 
   handleSave (event) {
-    event.preventDefault();
-    const temp = !this.state.enteredShipping
-    console.log(temp)
-    this.setState({enteredShipping: temp})
-    console.log("Saved???", this.state)
+    event.preventDefault()
+    this.setState({enteredShipping: !this.state.enteredShipping})
+    //setTimeout(() => console.log("Saved???", this.state), 500)
   }
 
   render() {
@@ -84,12 +79,26 @@ class OrderContainer extends Component {
     return (
       <Grid className="order">
         <h1>Enter Shipping Address:</h1>
-             <ShippingAddress
+            {this.state.enteredShipping === false ? <ShippingAddress
              handleSave={this.handleSave}
              handleChange={this.handleChange}
              state={this.state}
-              />
+              /> :
+              <div>
+                  <Col componentClass={ControlLabel} sm={1}>Name: </Col>
+                  <Col sm={4}>
+                  {this.state.name}
+                  </Col>
+                  <br />
+                  <br />
 
+                    <Col componentClass={ControlLabel} sm={1}>Address: </Col>
+                    <Col sm={4}>
+                    {this.state.address}
+                    </Col>
+
+              </div>
+            }
         <br />
 
         <h1>Review Items: </h1>
