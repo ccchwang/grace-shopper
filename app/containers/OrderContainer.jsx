@@ -4,7 +4,7 @@ import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } fr
 import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import ShippingAddress from "../components/ShippingAddress"
-
+import axios from 'axios'
 
 
 class OrderContainer extends Component {
@@ -19,6 +19,7 @@ class OrderContainer extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)
+    this.handleOrderSubmit = this.handleOrderSubmit.bind(this)
   }
 
   handleChange(input, event) {
@@ -33,11 +34,27 @@ class OrderContainer extends Component {
   handleSave (event) {
     event.preventDefault()
     this.setState({enteredShipping: !this.state.enteredShipping})
-    //setTimeout(() => console.log("Saved???", this.state), 500)
+  }
+
+  handleOrderSubmit() {
+    const cartInfo = {
+      name: this.state.name,
+      address: this.state.address,
+      userId: this.props.userId,
+      cartId: this.props.lineItems[0].cart_id,
+    }
+    console.log("Cart infor in handleOrderSubmit", cartInfo)
+    axios.post('/api/order/neworder', cartInfo)
+    .then(function (newOrder) {
+      console.log("TESTING ", newOrder.data)
+      return newOrder.data
+    })
+    .catch(console.error)
   }
 
   render() {
-    console.log(this.props)
+    console.log("PROPS-------", this.props)
+    console.log("STATE--------", this.state)
     let total = 0;
     let lineItems = this.props.lineItems
 
@@ -122,11 +139,11 @@ class OrderContainer extends Component {
            <Col sm={2} md={2}>
              <h4>{total}</h4>
             </Col>
-            <LinkContainer to="/SOMETHINGHERE" >
-              <Button bsStyle='warning'>
+
+              <Button onClick={this.handleOrderSubmit} bsStyle='warning'>
                 Place Order
               </Button>
-            </LinkContainer>
+
 
          </Row>
       </Grid>
@@ -140,6 +157,7 @@ export default connect(
   (state) => {
     return {
       lineItems: state.cart.lineItems,
+      userId: state.auth.id,
     }
   }
 )(OrderContainer)
