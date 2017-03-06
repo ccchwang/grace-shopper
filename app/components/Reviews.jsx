@@ -3,6 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 export default function({ reviews, selectedProduct }) {
 
+  //having a review-generating function? 
   const rows = reviews && reviews.map(review => {
     return (
       <div key={review.id} >

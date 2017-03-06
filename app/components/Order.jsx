@@ -5,6 +5,8 @@ import OrderContainer from '../containers/OrderContainer'
 import { LinkContainer } from 'react-router-bootstrap'
 import ShippingAddressContainer from '../containers/ShippingAddressContainer'
 
+
+//--N.A.: {rows} as separate component 
 export default function ({lineItems}) {
 
 let total = 0;

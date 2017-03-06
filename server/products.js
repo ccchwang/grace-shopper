@@ -10,7 +10,10 @@ api.param('productId', function(req, res, next, productId) {
       })
 })
 
+//--N.A.: use req.query to get product by categoryName: ?categoryName=giraffes
+  //instead of separate categoryName route
 api.get('/', function(req, res, next) {
+  //where: req.query
   Product.findAll()
     .then(products => res.send(products))
     .catch(next)

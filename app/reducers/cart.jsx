@@ -6,6 +6,7 @@ const initialState = {
   lineItems: []
 }
 
+//--N.A.: modularize filter?
 const reducer = (state = initialState, action) => {
   const newState = Object.assign({}, state)
 

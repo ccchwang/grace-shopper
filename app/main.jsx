@@ -20,7 +20,7 @@ import { receiveProducts, receiveProduct } from './reducers/products'
 import { receiveReviews } from './reducers/reviews'
 import { receiveLineItems } from './reducers/cart'
 
-
+//--N.A.: potentially put these in another file? 
 const loadProductsAndCartItems = (nextState, replace, done) => {
   axios.get('/api/products')
     .then(products => store.dispatch(receiveProducts(products.data)))
@@ -55,14 +55,14 @@ const loadCategorizedProducts = (nextState, replace, done) => {
     .catch(console.error)
 }
 
-
+//--N.A.: IndexRedirect below "/"?
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={AppContainer}>
+         <IndexRedirect to="/home" />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
-        <IndexRedirect to="/home" />
         <Route path="/home" component={HomePageContainer} onEnter={loadProductsAndCartItems} />
         <Route path="/products/:productId" component={SingleProductContainer} onEnter={loadSingleProduct}/>
         <Route path="/category/:categoryName" component={HomePageContainer} onEnter={loadCategorizedProducts} />

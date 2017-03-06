@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router'
 
-
+//--N.A.: interpolate className and have column as a separate component
 export default function(props) {
   const boxes = props.products.map((product, index) => {
     const gridBackground = { backgroundImage: `url(${product.photo})`, cursor: "pointer" }

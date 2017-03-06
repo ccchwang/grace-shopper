@@ -13,7 +13,7 @@ class MyNavbar extends React.Component {
   }
 
 
-
+  //--N.A.: to render more concisely, map over animals object
   render () {
     return (
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
@@ -77,7 +77,7 @@ class MyNavbar extends React.Component {
     )
   }
 
-
+//--N.A.: should be components instead of methods (just returning JSX)
   renderLoginSignup() {
     return (
       <Nav pullRight>

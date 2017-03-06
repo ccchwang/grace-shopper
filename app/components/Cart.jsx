@@ -3,7 +3,7 @@ import { Grid, Row, Col, Button, FormControl, Form, FormGroup, ControlLabel } fr
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router'
 
-
+//--N.A.: separate component for each item mapping
 export default function({ lineItems, handleRemove, handleUpdate }) {
 
   let total = 0;
@@ -39,7 +39,9 @@ export default function({ lineItems, handleRemove, handleUpdate }) {
             </h4>
           </Col>
           <br />
-          <Button bsStyle='danger' onClick={(e) => handleRemove(e, item.id)}>Remove</Button>
+          <Button bsStyle='danger' onClick={(e) => {
+            handleRemove(e, item.id)
+            }}>Remove</Button>
 
         </Row>
         <hr />

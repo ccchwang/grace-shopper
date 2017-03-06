@@ -26,6 +26,8 @@ const reducer = (state = initialState, action) => {
 
 //ACTION CREATORS
 
+
+//rname ?
 export const receiveName = (name) => {
   return {
     type: "RECEIVE_NAME",
