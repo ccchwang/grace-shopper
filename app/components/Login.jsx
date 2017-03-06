@@ -1,5 +1,5 @@
 import React from 'react'
-import {PageHeader, Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
+import {Form, Col, FormGroup, Checkbox, Button, ControlLabel, FormControl} from "react-bootstrap"
 
 export const Login = ({ login }) => (
   <div className="login-container">

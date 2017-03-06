@@ -70,4 +70,3 @@ export const updateLineItem = (lineItemId, quantity) => {
 }
 
 export default reducer
-
