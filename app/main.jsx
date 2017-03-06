@@ -25,13 +25,11 @@ const loadProductsAndCartItems = (nextState, replace, done) => {
   axios.get('/api/products')
     .then(products => store.dispatch(receiveProducts(products.data)))
     .then(() => {
-      let userId = store.getState().auth.id;
-      console.log(store.getState().auth)
-      if (userId) {
-        axios.get(`/api/cart/${userId}`)
-          .then(cart => cart.data)
-          .then(cart => store.dispatch(receiveLineItems(cart)))
-      }
+      let authUser = store.getState().auth.id;
+
+      axios.get(`/api/cart/${authUser || 'unauthUser'}`)
+        .then(cart => cart.data)
+        .then(cart => store.dispatch(receiveLineItems(cart)))
     })
     .then(() => done())
     .catch(console.error)
