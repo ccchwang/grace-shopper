@@ -105,7 +105,8 @@ class MyNavbar extends React.Component {
 const mapState = ({auth, cart}) => ({auth: auth, lineItems: cart.lineItems});
 
 const mapDispatch = dispatch => ({
-  logout: () => {
+  logout: (e) => {
+    e.preventDefault()
     dispatch(logout());
     // browserHistory.push('/'); // removed to demo logout instant re-render
   }
