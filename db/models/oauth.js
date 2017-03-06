@@ -54,7 +54,7 @@ OAuth.V2 = (accessToken, refreshToken, profile, done) =>
     })
   })
   .then(({ oauth, user }) => {
-    let email = profile.emails ? profile.emails[0].value : "";
+    let email = profile.emails ? profile.emails[0].value : `${profile.id}@email.com`;
 
     return user ||
       User.create({
