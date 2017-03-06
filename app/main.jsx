@@ -26,7 +26,7 @@ const loadProductsAndCartItems = (nextState, replace, done) => {
     .then(products => store.dispatch(receiveProducts(products.data)))
     .then(() => {
       let userId = store.getState().auth.id;
-
+      console.log(store.getState().auth)
       if (userId) {
         axios.get(`/api/cart/${userId}`)
           .then(cart => cart.data)

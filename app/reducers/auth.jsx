@@ -34,7 +34,10 @@ export const login = (username, password) =>
 export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
-      .then(() => dispatch(whoami()))
+      .then(response => {
+        const user = response.data
+        return dispatch(authenticated(user))
+      })
       .then(() => dispatch(receiveLineItems([])))  //to clear cart in store after local logout
       .catch(() => dispatch(whoami()))
 
