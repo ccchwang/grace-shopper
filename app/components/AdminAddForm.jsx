@@ -1,10 +1,10 @@
 import React from 'react'
-import { Form, FieldGroup, FormGroup, ControlLabel, FormControl, Button, HelpBlock } from 'react-bootstrap'
+import { Form, Alert, FormGroup, ControlLabel, FormControl, Button, HelpBlock } from 'react-bootstrap'
 
-export default function({ handleInputCheck, invalidName, invalidDescript, invalidCategory, invalidPrice }) {
+export default function({ handleInputCheck, invalidName, invalidDescript, invalidCategory, invalidPrice, successfulAdd }) {
 
   return (
-    <div>
+    <div className="main-padding">
       <h2>Add a New Baby</h2>
       <Form onSubmit={handleInputCheck}>
 
@@ -47,6 +47,13 @@ export default function({ handleInputCheck, invalidName, invalidDescript, invali
       <Button type="submit" bsStyle="success">
         Add Product
       </Button>
+      <br /><br />
+      { successfulAdd &&
+        <Alert bsStyle="success">
+          <strong>Hooray!</strong> Added successfully.
+        </Alert>
+      }
+
     </Form>
   </div>
   )

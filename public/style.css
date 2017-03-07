@@ -12,6 +12,11 @@
   padding-bottom: 100px;
 }
 
+.main-padding {
+  width: 90%;
+  margin: 0 auto
+}
+
 /*#footer {
   position: relative;
   margin-top: 20px;
@@ -138,7 +143,7 @@
 /* ADMIN PAGE */
 
 .admin-main {
-  width: 60%;
+  width: 90%;
   margin: 0 auto
 }
 
