@@ -15,6 +15,7 @@ class MyNavbar extends React.Component {
 
 
   render () {
+
     return (
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
@@ -62,12 +63,17 @@ class MyNavbar extends React.Component {
               <Button type="submit">Submit</Button>
             </Navbar.Form>
 
-          <Nav pullRight>
-            <LinkContainer to="/admin">
-             <NavItem eventKey={1}>
-               Admin
-             </NavItem>
-          </LinkContainer>
+
+            <Nav pullRight>
+
+            {this.props.auth.isAdmin ?
+              <LinkContainer to="/admin">
+                <NavItem eventKey={1}>
+                  Admin
+                </NavItem>
+              </LinkContainer>
+              : null
+            }
 
             <LinkContainer to="/cart">
              <NavItem eventKey={2}>Cart ({this.props.lineItems.reduce((acc, currentItem) => {
