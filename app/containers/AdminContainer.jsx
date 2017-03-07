@@ -67,7 +67,7 @@ export default connect(null,
 
   handleAddShow (e) {
     e.preventDefault();
-    this.setState({showAdd: true, showEdit: false})
+    this.setState({showAdd: true, showEdit: false, successfulAdd: false})
   }
 
   handleEditShow (e) {
