@@ -49,7 +49,7 @@ const CreateReview = React.createClass({
         if (this.props.user) {
             return (
                 <div> 
-                    <Button bsStyle="primary" bsSize="large" onClick={this.open} >
+                    <Button bsStyle="primary" bsSize="small" onClick={this.open} >
                     Review This Product
                     </Button>
 
@@ -99,10 +99,5 @@ export default CreateReview
 
 
 /* 
-    Features that could be improved: 
-        Style the alert box that pops up if you don't enter a rating or review
-        Need to rerender all the reviews when you close the modal to reflect the review that was just created
-        Restyle/move review product button on single page (especially on yarn,  buster, etc.)
-        Put average rating on single page
-        Render most recent review first
+    Need to rerender all the reviews when you close the modal to reflect the review that was just created
 */

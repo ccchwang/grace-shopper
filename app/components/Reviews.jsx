@@ -1,8 +1,22 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import CreateReview from './CreateReview'
+import CreateReviewContainer from '../containers/CreateReviewContainer'
 
 export default function({ reviews, selectedProduct }) {
+
+  let ratingSum = 0;
+  let avgRating;
+  for (var i = 0; i < reviews.length; i++) {
+    ratingSum += +reviews[i].rating
+  }
+  const avg = (ratingSum / reviews.length).toFixed(1);
+  if (isNaN(avg)) {
+    avgRating = 'No Reviews Yet';
+  } else {
+    avgRating = avg + ' / 5';
+  }
+
+  reviews = reviews.reverse();
 
   const rows = reviews && reviews.map(review => {
     return (
@@ -32,8 +46,12 @@ export default function({ reviews, selectedProduct }) {
   })
 
   return (
-   <Grid>
-     <h3>Reviews</h3>
+   <Grid id="reviews">
+     <h2>Reviews</h2> 
+     <div className="avg-rating">
+        <h5>Average Rating: {avgRating}</h5>
+     </div>
+     <CreateReviewContainer />
      <hr />
       { rows }
     </Grid>

@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router';
 import ReviewContainer from '../containers/ReviewContainer'
-import CreateReviewContainer from '../containers/CreateReviewContainer'
 
 
 export default function({selectedProduct, handleCartAdd, user}) {
@@ -22,12 +21,11 @@ export default function({selectedProduct, handleCartAdd, user}) {
             <p> {selectedProduct.description} </p>
             <Button bsStyle="info" className="add-cart-btn">
               <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link> 
-            </Button>
+            </Button> 
         </Col>
-        <CreateReviewContainer />
 
         <Col sm={12} >
-          <ReviewContainer />
+          <ReviewContainer/>
         </Col>
       </Row>
     </Grid>
