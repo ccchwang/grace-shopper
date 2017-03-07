@@ -44,7 +44,7 @@ const seedProducts = () => db.Promise.map([
 {name: "Tickles", description: "Adventurous and ticklish", category: "cat", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals-2/cute-baby-animals-2-2.jpg", price: 6500},
 {name: "Dumbo", description: "Scared of mice, great memory", category: "elephant", quantity: 3, photo: "http://i.dailymail.co.uk/i/pix/2016/08/21/17/3775BD5C00000578-0-image-a-7_1471796003762.jpg", price: 4000},
 {name: "Bob", description: "Kind of an ass", category: "donkey", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uploads/2014/12/cutest-baby-animals-9__605.jpg", price: 5500},
-{name: "Thumper", description: "Sir Thump-a-lot", category: "bunny", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/564x/8c/15/38/8c1538ff1e692657a12c55b16af16a7b.jpg", price: 10000},
+{name: "Thumper", description: "Sir Thump-a-lot", category: "bunny", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/736x/17/63/3d/17633dcba95daeeec9d3f079ef335f9e.jpg", price: 10000},
 
 ], products => db.model('products').create(products))
 

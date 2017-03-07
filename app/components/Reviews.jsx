@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
+import CreateReview from './CreateReview'
 
 export default function({ reviews, selectedProduct }) {
 

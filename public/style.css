@@ -110,3 +110,21 @@
   width: 20%;
   margin: 0 auto
 }
+
+
+/* Create Review */
+#review-text {
+  height: 100px;
+}
+
+#review-form-header {
+  background-color: lightblue;
+  text-align: center;
+}
+
+.rating-stars button {
+  border: none;
+  padding: none;
+  font-size: 1em;
+  color: rgb(241, 218, 21);
+}
