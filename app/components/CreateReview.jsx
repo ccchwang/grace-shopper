@@ -7,7 +7,7 @@ const CreateReview = React.createClass({
     getInitialState(){
         return { 
             showModal: false,
-            rating: null 
+            rating: null
         };
     },
 
@@ -40,9 +40,8 @@ const CreateReview = React.createClass({
             alert('You must enter a rating and description to submit a review.')
             return;
         }
-        this.props.handleSubmit(description, rating, userId, productId);
+        const newReview = this.props.handleSubmit(description, rating, userId, productId);
         this.close();
-
     },
 
     render() {

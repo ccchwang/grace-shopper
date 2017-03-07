@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
       break;
 
     case "RECEIVE_REVIEW":
-      newState.reviews.concat(action.review)
+      newState.reviews = newState.reviews.concat(action.review)
       break;
 
     default: return state;

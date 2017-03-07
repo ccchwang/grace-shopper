@@ -21,11 +21,11 @@ export default connect(
             user_id: userId,
             product_id: productId
           }
-          console.log('newReview: ', newReview)
+
           axios.post(`/api/products/reviews/${productId}`, newReview)
             .then((created) => {
-              console.log('created in handleSubmit: ', created)
-              dispatch(receiveReview(created))
+              dispatch(receiveReview(created.data))
+              return created.data;
             })
             .catch(console.error)
       }

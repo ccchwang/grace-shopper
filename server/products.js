@@ -27,11 +27,12 @@ api.get('/:productId', function (req, res, next) {
 })
 
 api.post('/reviews/:productId', function (req, res, next) {
-  console.log('req.body in api post', req.body)
   Review.create(req.body)
-    .then(created => console.log('created: ', created))
+    .then(created => { 
+      res.send(created);
+    })
     .catch(next)
-})
+    })
 
 
 // api.get('/products/:productId', function (req, res, next) {
