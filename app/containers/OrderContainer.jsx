@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import ShippingAddress from "../components/ShippingAddress"
 import axios from 'axios'
-
+import {receiveLineItems} from '../reducers/cart'
 
 class OrderContainer extends Component {
 
@@ -14,6 +14,7 @@ class OrderContainer extends Component {
     this.state = {
       name: "",
       address: "",
+      totalPrice: 0,
       enteredShipping: false,
     }
 
@@ -28,7 +29,6 @@ class OrderContainer extends Component {
     change[input] = value
 
     this.setState(change)
-    console.log(this.state);
   }
 
   handleSave (event) {
@@ -37,19 +37,33 @@ class OrderContainer extends Component {
   }
 
   handleOrderSubmit() {
+    console.log('handlesubmitthis', this)
     const cartInfo = {
       name: this.state.name,
       address: this.state.address,
       userId: this.props.userId,
       cartId: this.props.lineItems[0].cart_id,
+      totalPrice: this.state.totalPrice
     }
     axios.post('/api/order/neworder', cartInfo)
     .then(function (newOrder) {
       //console.log("TESTING ", newOrder.data)
       // return newOrder.data
+      // this.props.wipeCart()
     })
+    .then(() => console.log('this', this))
     .catch(console.error)
   }
+
+  componentWillReceiveProps(nextProps){
+    let total = 0;
+    let totalPrice = nextProps.lineItems.forEach(item => {
+      let price = (item.product.price * item.quantity).toFixed(2)
+      total += +price;
+    })
+    this.setState({totalPrice: total})
+  }
+
 
   render() {
     let total = 0;
@@ -136,11 +150,11 @@ class OrderContainer extends Component {
            <Col sm={2} md={2}>
              <h4>{total}</h4>
             </Col>
-
+            <LinkContainer to="/confirmed" >
               <Button onClick={this.handleOrderSubmit} bsStyle='warning'>
                 Place Order
               </Button>
-
+            </LinkContainer>
 
          </Row>
       </Grid>
@@ -157,4 +171,11 @@ export default connect(
       userId: state.auth.id,
     }
   }
+  // (dispatch) => {
+  //   return {
+  //     wipeCart: function(){
+  //       dispatch(receiveLineItems([]))
+  //     }
+  //   }
+  // }
 )(OrderContainer)

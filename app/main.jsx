@@ -8,7 +8,7 @@ import axios from 'axios'
 import store from './store'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-// import WhoAmI from './components/WhoAmI'
+import ConfirmOrder from './components/ConfirmOrder'
 import HomePageContainer from './containers/HomePageContainer'
 import AppContainer from './containers/AppContainer'
 import SingleProductContainer from './containers/SingleProductContainer'
@@ -66,7 +66,7 @@ render (
         <Route path="/category/:categoryName" component={HomePageContainer} onEnter={loadCategorizedProducts} />
         <Route path="/cart" component={CartContainer} onEnter={loadProductsAndCartItems} />
         <Route path="/order" component={OrderContainer} onEnter={loadProductsAndCartItems}/>
-
+        <Route path="/confirmed" component={ConfirmOrder} />
       </Route>
     </Router>
   </Provider>,
