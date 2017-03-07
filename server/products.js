@@ -27,6 +27,47 @@ api.get('/:productId', function (req, res, next) {
 })
 
 
+api.delete('/:productId', function (req, res, next) {
+  Product.destroy({where: {id: req.params.productId}})
+         .then(() => res.send(204))
+         .catch(next)
+})
+
+api.post('/reviews/:productId', function (req, res, next) {
+  Review.create(req.body)
+    .then(created => { 
+      return Review.findOne({
+        where: {id: created.id},
+        include: [{ model: User}]
+      })
+        .then(foundReview => {
+          res.send(foundReview)
+        })
+        .catch(console.error)
+    })
+    .catch(next)
+    })
+
+
+api.post('/', function(req, res, next) {
+  console.log(req.body.imgUrl)
+  Product.create({
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    price: req.body.price,
+    photo: req.body.imgUrl || 'http://2.bp.blogspot.com/-ZMlNn8uoh-g/UEcaQVZGNCI/AAAAAAAAC_o/e6nCNSZGkUA/s1600/funny-cat-and-kitten-pictures+%25284%2529.jpeg'
+  })
+  .then(product => res.send(product))
+  .catch(next)
+})
+
+api.post('/test', function(req, res, next) {
+  console.log("~~~", req.body)
+})
+
+
+
 // api.get('/products/:productId', function (req, res, next) {
 //   Review.scope('user').findAll()
 //     .then(reviews => console.log(reviews))

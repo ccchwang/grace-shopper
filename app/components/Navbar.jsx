@@ -15,6 +15,7 @@ class MyNavbar extends React.Component {
 
 
   render () {
+
     return (
        <Navbar inverse collapseOnSelect fixedTop id="navbar">
         <Navbar.Header>
@@ -62,7 +63,18 @@ class MyNavbar extends React.Component {
               <Button type="submit">Submit</Button>
             </Navbar.Form>
 
-          <Nav pullRight>
+
+            <Nav pullRight>
+
+            {this.props.auth.isAdmin ?
+              <LinkContainer to="/admin">
+                <NavItem eventKey={1}>
+                  Admin
+                </NavItem>
+              </LinkContainer>
+              : null
+            }
+
             <LinkContainer to="/cart">
              <NavItem eventKey={2}>Cart ({this.props.lineItems.reduce((acc, currentItem) => {
                   return acc + currentItem.quantity
@@ -105,7 +117,8 @@ class MyNavbar extends React.Component {
 const mapState = ({auth, cart}) => ({auth: auth, lineItems: cart.lineItems});
 
 const mapDispatch = dispatch => ({
-  logout: () => {
+  logout: (e) => {
+    e.preventDefault()
     dispatch(logout());
     // browserHistory.push('/'); // removed to demo logout instant re-render
   }

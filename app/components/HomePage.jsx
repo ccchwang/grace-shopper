@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 
 export default function(props) {
   const boxes = props.products.map((product, index) => {
-    const gridBackground = { backgroundImage: `url(${product.photo})`, cursor: "pointer" }
+  const gridBackground = { backgroundImage: `url(${product.photo})`, cursor: "pointer" }
 
     if (index === 0 || index % 14 === 0) {
       return (

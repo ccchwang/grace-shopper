@@ -1,12 +1,12 @@
 const db = require('APP/db')
 
 const seedUsers = () => db.Promise.map([
-  {name: 'so many', email: 'god@example.com', admin: true, password: '1234'},
-  {name: 'Barack Obama', email: 'admin@example.com', admin: true, password: '1234'},
-  {name: 'Anne', email: 'anne@gmail.com', admin: false, password: '1234'},
-  {name: 'Chloe', email: 'chloe@gmail.com', admin: false, password: 'abcd'},
-  {name: 'Aria', email: 'aria@gmail.com', admin: false, password: 'aria'},
-  {name: 'Susan', email: 'susan@gmail.com', admin: false, password: 'susan'},
+  {name: 'so many', email: 'god@example.com', admin: true, password: '1234', isAdmin: true},
+  {name: 'Barack Obama', email: 'admin@example.com', admin: true, password: '1234', isAdmin: true},
+  {name: 'Anne', email: 'anne@gmail.com', admin: false, password: '1234', isAdmin: true},
+  {name: 'Chloe', email: 'chloe@gmail.com', admin: false, password: 'abcd', isAdmin: true},
+  {name: 'Aria', email: 'aria@gmail.com', admin: false, password: 'aria', isAdmin: true},
+  {name: 'Susan', email: 'susan@gmail.com', admin: false, password: 'susan', isAdmin: true},
 ], user => db.model('users').create(user))
 
 const seedReviews = () => db.Promise.map([
@@ -44,7 +44,14 @@ const seedProducts = () => db.Promise.map([
 {name: "Tickles", description: "Adventurous and ticklish", category: "cat", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals-2/cute-baby-animals-2-2.jpg", price: 6500},
 {name: "Dumbo", description: "Scared of mice, great memory", category: "elephant", quantity: 3, photo: "http://i.dailymail.co.uk/i/pix/2016/08/21/17/3775BD5C00000578-0-image-a-7_1471796003762.jpg", price: 4000},
 {name: "Bob", description: "Kind of an ass", category: "donkey", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uploads/2014/12/cutest-baby-animals-9__605.jpg", price: 5500},
-{name: "Thumper", description: "Sir Thump-a-lot", category: "bunny", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/564x/8c/15/38/8c1538ff1e692657a12c55b16af16a7b.jpg", price: 10000},
+{name: "Thumper", description: "Sir Thump-a-lot", category: "bunny", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/736x/17/63/3d/17633dcba95daeeec9d3f079ef335f9e.jpg", price: 10000},
+{name: "Jeffrey", description: "Loves his blanket", category: "dog", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/originals/2f/bb/39/2fbb393a0ccdcf7c1ebc197ab03d8dc1.jpg", price: 9500},
+{name: "Smiley", description: "Very happy to see you", category: "goat", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/236x/41/ee/f0/41eef07e886d7938b3671c6a46420c02.jpg", price: 10000},
+{name: "Chester", description: "Available for all your formal affairs", category: "dog", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/564x/8b/89/ac/8b89ac5a8f6d1f6019f6b4fd7f204056.jpg", price: 7500},
+{name: "Tumblina", description: "Sweet, but struggles with gravity", category: "bunny", quantity: 3, photo: "http://static.boredpanda.com/blog/wp-content/uploads/2015/09/cute-bunnies-25__605.jpg", price: 6800},
+{name: "Benny", description: "Loves to climb and swing through trees", category: "monkey", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/236x/e9/1f/fa/e91ffa902da4a461cd5ebda353be2a67.jpg", price: 10000},
+{name: "Liberace", description: "Excellent singer", category: "cat", quantity: 3, photo: "https://s-media-cache-ak0.pinimg.com/736x/f3/bd/84/f3bd8497e15399201b634714ec5ed390.jpg", price: 8200},
+{name: "Diego", description: "Hard worker, currently training for the world cup", category: "elephant", quantity: 3, photo: "http://i.imgur.com/iFgnD7m.jpg", price: 9000}
 
 ], products => db.model('products').create(products))
 

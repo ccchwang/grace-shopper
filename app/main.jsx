@@ -15,6 +15,7 @@ import SingleProductContainer from './containers/SingleProductContainer'
 import CartContainer from './containers/CartContainer'
 import OrderContainer from './containers/OrderContainer'
 import ConfirmContainer from './containers/ConfirmContainer'
+import AdminContainer from './containers/AdminContainer'
 
 //redux things
 import { receiveProducts, receiveProduct } from './reducers/products'
@@ -68,6 +69,9 @@ render (
         <Route path="/cart" component={CartContainer} onEnter={loadProductsAndCartItems} />
         <Route path="/order" component={OrderContainer} onEnter={loadProductsAndCartItems}/>
         <Route path="/confirmed" component={ConfirmContainer} />
+        <Route path="/admin" component={AdminContainer} />
+
+
       </Route>
     </Router>
   </Provider>,
