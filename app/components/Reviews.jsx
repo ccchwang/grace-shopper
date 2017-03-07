@@ -28,17 +28,11 @@ export default class Reviews extends React.Component {
     }
 
     const rows = reviews.length > 0 && reviews.map(review => {
-      let userName;
-      if (!review.user) {
-        userName = '';
-      } else {
-        userName = review.user.name;
-      }
       return (
         <div key={review.id} >
           <Row className="show-grid">
             <Col sm={12} md={2} >
-              <h4><strong>{userName}</strong></h4>
+              <h4><strong>{review.user.name}</strong></h4>
             </Col>
 
             <Col sm={12} md={8} >
