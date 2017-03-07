@@ -43,18 +43,15 @@ class OrderContainer extends Component {
       userId: this.props.userId,
       cartId: this.props.lineItems[0].cart_id,
     }
-    console.log("Cart infor in handleOrderSubmit", cartInfo)
     axios.post('/api/order/neworder', cartInfo)
     .then(function (newOrder) {
-      console.log("TESTING ", newOrder.data)
-      return newOrder.data
+      //console.log("TESTING ", newOrder.data)
+      // return newOrder.data
     })
     .catch(console.error)
   }
 
   render() {
-    console.log("PROPS-------", this.props)
-    console.log("STATE--------", this.state)
     let total = 0;
     let lineItems = this.props.lineItems
 
