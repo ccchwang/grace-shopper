@@ -19,7 +19,7 @@ export default connect(null,
         })
         .then(product => {
           dispatch(receiveProduct(product.data))
-          browserHistory.push('/')
+          browserHistory.push('/admin')
         })
         .catch(console.error)
       }
@@ -32,9 +32,14 @@ export default connect(null,
       invalidName: null,
       invalidDescript: null,
       invalidCategory: null,
-      invalidPrice: null
+      invalidPrice: null,
+      showAdd: false,
+      showEdit: false,
+      successfulAdd: false
     }
-    this.handleInputCheck = this.handleInputCheck.bind(this)
+    this.handleInputCheck = this.handleInputCheck.bind(this);
+    this.handleAddShow = this.handleAddShow.bind(this);
+    this.handleEditShow = this.handleEditShow.bind(this)
   }
 
   handleInputCheck (e) {
@@ -45,7 +50,7 @@ export default connect(null,
     const price = e.target.price.value * 100;
     const imgUrl = e.target.imgUrl.value;
     let invalid = false;
-console.log(price)
+
     if (!name || !description || !category || !price) {
       if (!name) this.setState({invalidName: "error"})
       if (!description) this.setState({invalidDescript: "error"})
@@ -55,12 +60,34 @@ console.log(price)
     }
 
     if (!invalid) {
+      this.setState({successfulAdd: true})
       this.props.handleSubmit({name, description, category, price, imgUrl})
     }
   }
 
+  handleAddShow (e) {
+    e.preventDefault();
+    this.setState({showAdd: true, showEdit: false})
+  }
+
+  handleEditShow (e) {
+    e.preventDefault();
+    this.setState({showEdit: true, showAdd: false})
+  }
+
   render () {
-    return <AdminPage inputCheck={this.state} handleInputCheck={this.handleInputCheck}/>
+    return (
+
+    <AdminPage
+      inputCheck={this.state}
+      handleInputCheck={this.handleInputCheck}
+      showAdd={this.state.showAdd}
+      showEdit={this.state.showEdit}
+      handleAddShow={this.handleAddShow}
+      handleEditShow={this.handleEditShow}
+      successfulAdd={this.state.successfulAdd}
+    />
+    )
   }
 })
 

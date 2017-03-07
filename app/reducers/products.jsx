@@ -19,6 +19,10 @@ const reducer = (state = initialState, action) => {
       newState.selectedProduct = action.product
       break;
 
+    case "REMOVE_PRODUCT":
+      newState.products = newState.products.filter(p => p.id !== action.id);
+      break;
+
     default: return state;
     }
   return newState
@@ -37,6 +41,13 @@ export const receiveProduct = (product) => {
   return {
     type: "RECEIVE_PRODUCT",
     product
+  }
+}
+
+export const removeProduct = (id) => {
+  return {
+    type: "REMOVE_PRODUCT",
+    id
   }
 }
 

@@ -26,6 +26,12 @@ api.get('/:productId', function (req, res, next) {
       .catch(next)
 })
 
+api.delete('/:productId', function (req, res, next) {
+  Product.destroy({where: {id: req.params.productId}})
+         .then(() => res.send(204))
+         .catch(next)
+})
+
 api.post('/', function(req, res, next) {
   console.log(req.body.imgUrl)
   Product.create({
