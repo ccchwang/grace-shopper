@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import ShippingAddress from "../components/ShippingAddress"
 import axios from 'axios'
+import {receiveOrder } from '../reducers/order'
 import {receiveLineItems} from '../reducers/cart'
 
 class OrderContainer extends Component {
@@ -37,7 +38,6 @@ class OrderContainer extends Component {
   }
 
   handleOrderSubmit() {
-    console.log('handlesubmitthis', this)
     const cartInfo = {
       name: this.state.name,
       address: this.state.address,
@@ -45,14 +45,7 @@ class OrderContainer extends Component {
       cartId: this.props.lineItems[0].cart_id,
       totalPrice: this.state.totalPrice
     }
-    axios.post('/api/order/neworder', cartInfo)
-    .then(function (newOrder) {
-      //console.log("TESTING ", newOrder.data)
-      // return newOrder.data
-      // this.props.wipeCart()
-    })
-    .then(() => console.log('this', this))
-    .catch(console.error)
+    this.props.createOrder(cartInfo)
   }
 
   componentWillReceiveProps(nextProps){
@@ -169,13 +162,19 @@ export default connect(
     return {
       lineItems: state.cart.lineItems,
       userId: state.auth.id,
+      order: state.order.selectedOrder
+    }
+  },
+  (dispatch) => {
+    return {
+      createOrder: function(cartInfo){
+        axios.post('/api/order/neworder', cartInfo)
+          .then(function (newOrder) {
+            dispatch(receiveOrder(newOrder.data))
+          })
+          .then(() => dispatch(receiveLineItems([])))
+          .catch(console.error)
+      }
     }
   }
-  // (dispatch) => {
-  //   return {
-  //     wipeCart: function(){
-  //       dispatch(receiveLineItems([]))
-  //     }
-  //   }
-  // }
 )(OrderContainer)
