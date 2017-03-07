@@ -29,7 +29,14 @@ api.get('/:productId', function (req, res, next) {
 api.post('/reviews/:productId', function (req, res, next) {
   Review.create(req.body)
     .then(created => { 
-      res.send(created);
+      return Review.findOne({
+        where: {id: created.id},
+        include: [{ model: User}]
+      })
+        .then(foundReview => {
+          res.send(foundReview)
+        })
+        .catch(console.error)
     })
     .catch(next)
     })
