@@ -6,7 +6,6 @@ import ReviewContainer from '../containers/ReviewContainer'
 
 export default function({selectedProduct, handleCartAdd, user}) {
 
-
   return (
     <Grid>
       <Row className="show-grid">
@@ -20,16 +19,14 @@ export default function({selectedProduct, handleCartAdd, user}) {
             </Link>
             <h3> ${selectedProduct.price} </h3>
             <p> {selectedProduct.description} </p>
-            <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}>
-              <Button bsStyle="info" className="add-cart-btn">
-                <h4>Add to Cart</h4>
-              </Button>
-            </Link>
+
+            <Button bsStyle="info" className="add-cart-btn">
+              <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link> 
+            </Button> 
         </Col>
 
-
         <Col sm={12} >
-          <ReviewContainer />
+          <ReviewContainer/>
         </Col>
       </Row>
     </Grid>

@@ -26,6 +26,14 @@ api.get('/:productId', function (req, res, next) {
       .catch(next)
 })
 
+api.post('/reviews/:productId', function (req, res, next) {
+  Review.create(req.body)
+    .then(created => { 
+      res.send(created);
+    })
+    .catch(next)
+    })
+
 api.post('/', function(req, res, next) {
   console.log(req.body.imgUrl)
   Product.create({
@@ -42,6 +50,7 @@ api.post('/', function(req, res, next) {
 api.post('/test', function(req, res, next) {
   console.log("~~~", req.body)
 })
+
 
 
 // api.get('/products/:productId', function (req, res, next) {

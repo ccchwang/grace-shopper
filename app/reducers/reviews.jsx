@@ -14,6 +14,10 @@ const reducer = (state = initialState, action) => {
       newState.reviews = action.reviews
       break;
 
+    case "RECEIVE_REVIEW":
+      newState.reviews = newState.reviews.concat(action.review)
+      break;
+
     default: return state;
     }
   return newState
@@ -25,6 +29,13 @@ export const receiveReviews = (reviews) => {
   return {
     type: "RECEIVE_REVIEWS",
     reviews
+  }
+}
+
+export const receiveReview = (review) => {
+  return {
+    type: "RECEIVE_REVIEW",
+    review
   }
 }
 

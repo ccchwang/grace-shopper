@@ -100,6 +100,10 @@
    color: rgb(241, 218, 21);
 }
 
+#reviews {
+  margin-top: 40px;
+}
+
 /* CART */
 
 .cart h3 {
@@ -112,9 +116,29 @@
 }
 
 
+
+/* Create Review */
+#review-text {
+  height: 100px;
+}
+
+#review-form-header {
+  background-color: lightblue;
+  text-align: center;
+}
+
+.rating-stars button {
+  border: none;
+  padding: none;
+  font-size: 1em;
+  color: rgb(241, 218, 21);
+}
+
+
 /* ADMIN PAGE */
 
 .admin-main {
   width: 60%;
   margin: 0 auto
 }
+
