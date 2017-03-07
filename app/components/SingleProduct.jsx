@@ -19,6 +19,7 @@ export default function({selectedProduct, handleCartAdd, user}) {
             </Link>
             <h3> ${selectedProduct.price} </h3>
             <p> {selectedProduct.description} </p>
+
             <Button bsStyle="info" className="add-cart-btn">
               <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link> 
             </Button> 

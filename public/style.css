@@ -116,6 +116,7 @@
 }
 
 
+
 /* Create Review */
 #review-text {
   height: 100px;
@@ -131,5 +132,13 @@
   padding: none;
   font-size: 1em;
   color: rgb(241, 218, 21);
+}
+
+
+/* ADMIN PAGE */
+
+.admin-main {
+  width: 60%;
+  margin: 0 auto
 }
 
