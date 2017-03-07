@@ -63,6 +63,12 @@ class MyNavbar extends React.Component {
             </Navbar.Form>
 
           <Nav pullRight>
+            <LinkContainer to="/admin">
+             <NavItem eventKey={1}>
+               Admin
+             </NavItem>
+          </LinkContainer>
+
             <LinkContainer to="/cart">
              <NavItem eventKey={2}>Cart ({this.props.lineItems.reduce((acc, currentItem) => {
                   return acc + currentItem.quantity
