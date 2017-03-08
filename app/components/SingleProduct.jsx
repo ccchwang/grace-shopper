@@ -20,9 +20,10 @@ console.log(selectedProduct)
             <h3> ${selectedProduct.price} </h3>
             <p> {selectedProduct.description} </p>
 
-            <Button bsStyle="info" className="add-cart-btn">
-              <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link>
+            <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><Button bsStyle="info" className="add-cart-btn">
+               <h4>Add to Cart</h4>
             </Button>
+            </Link>
         </Col>
 
         <Col sm={12} >
