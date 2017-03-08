@@ -1,8 +1,8 @@
 #Hi, I'm Grace Shopper Babes!
 
 I'm a happy little shopping site.
-created by
 
+## Made with love by
 * Chloe Hwang
 * Susan Flanagan
 * Anne Zhou
