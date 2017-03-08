@@ -8,4 +8,4 @@ I'm a happy little shopping site.
 * Anne Zhou
 * Aria Moraine
 
-#This is a link to my deployed version grace-shopper-babes.herokuapp.com
+#This is a link to my deployed version [Grace Shopper Babes](https://grace-shopper-babes.herokuapp.com/)
