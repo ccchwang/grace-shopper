@@ -5,9 +5,9 @@ import ReviewContainer from '../containers/ReviewContainer'
 
 
 export default function({selectedProduct, handleCartAdd, user}) {
-
+console.log(selectedProduct)
   return (
-    <Grid>
+    <Grid className="productInfo">
       <Row className="show-grid">
         <Col sm={12} md={5} className="product-photo">
             <img className="image-responsive" src={selectedProduct.photo} />
@@ -21,8 +21,8 @@ export default function({selectedProduct, handleCartAdd, user}) {
             <p> {selectedProduct.description} </p>
 
             <Button bsStyle="info" className="add-cart-btn">
-              <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link> 
-            </Button> 
+              <Link to="/cart" onClick={(e) => handleCartAdd(e, user, selectedProduct)}><h4>Add to Cart</h4></Link>
+            </Button>
         </Col>
 
         <Col sm={12} >
