@@ -29,13 +29,13 @@ api.get('/:productId', function (req, res, next) {
 
 api.delete('/:productId', function (req, res, next) {
   Product.destroy({where: {id: req.params.productId}})
-         .then(() => res.send(204))
+         .then(() => res.sendStatus(204))
          .catch(next)
 })
 
 api.post('/reviews/:productId', function (req, res, next) {
   Review.create(req.body)
-    .then(created => { 
+    .then(created => {
       return Review.findOne({
         where: {id: created.id},
         include: [{ model: User}]
@@ -50,7 +50,6 @@ api.post('/reviews/:productId', function (req, res, next) {
 
 
 api.post('/', function(req, res, next) {
-  console.log(req.body.imgUrl)
   Product.create({
     name: req.body.name,
     description: req.body.description,
@@ -62,9 +61,9 @@ api.post('/', function(req, res, next) {
   .catch(next)
 })
 
-api.post('/test', function(req, res, next) {
-  console.log("~~~", req.body)
-})
+// api.post('/test', function(req, res, next) {
+//   console.log("~~~", req.body)
+// })
 
 
 
